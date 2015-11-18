@@ -1,0 +1,81 @@
+\documentclass[xcolor={x11names, rgb, usenames, dvipsnames}]{beamer}
+% Beamer loads xcolor by default. Do not load it a second time using \usepackage
+
+\usepackage[francais, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+% \usepackage{enumitem}
+\setlength{\leftmargini}{1em}%Shift the \item to the left.
+
+\setbeamertemplate{navigation symbols}{}
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+
+\begin{document}
+
+\begin{frame}[plain, noframenumbering]
+  \frametitle{Progress (date)}
+  \fbox{
+    \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}
+      Status
+      \begin{itemize}
+        \item Such status
+      \end{itemize}
+      % \vspace*{0.8\textheight}
+      \hfill
+    \end{minipage}
+  }
+  \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}%
+
+    %%%%%%%%%%%%%%%%%%
+    % Highlights box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        Highlights
+        \begin{itemize}
+          \item Very highlight
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Low points box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        Low points
+        \begin{itemize}
+          \item Wow
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Deliverables
+    %%%%%%%%%%%%%%%%%%
+    \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+      \begin{tabularx}{1.1\linewidth}{|X|l|X|l|} \hline
+        & Planned & Due Date & Status \\ \hline
+        Deliv 1 & & & \\ \hline
+        Deliv 2 & & & \\ \hline
+      \end{tabularx}
+    \end{minipage}
+
+  \end{minipage}
+\end{frame}
+
+
+\end{document}

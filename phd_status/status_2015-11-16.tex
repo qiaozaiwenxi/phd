@@ -1,0 +1,95 @@
+\documentclass[xcolor={x11names, rgb, usenames, dvipsnames}]{beamer}
+% Beamer loads xcolor by default. Do not load it a second time using \usepackage
+
+\usepackage[francais, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}{[\theenumiv]}
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+
+\begin{document}
+
+\begin{frame}[plain, noframenumbering]
+  \frametitle{Progress (2015-11-16)}
+  \fbox{
+    \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}
+      Status
+      \begin{itemize}
+        \item Algorithms to develop (min-cut):
+        \begin{itemize}
+          \item Kernighan-Lin Algorithm
+          \item Fiduccia-Mattheyses Algorithm
+          \item Hagen-Kahng EIG Partitioning
+        \end{itemize}
+        \item Implementation methods:
+        \begin{itemize}
+          \item Linear Programming
+          \item SemiDefinite Programming
+        \end{itemize}
+      \end{itemize}
+      % \vspace*{0.8\textheight}
+      \hfill
+    \end{minipage}
+  }
+  \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}%
+
+    %%%%%%%%%%%%%%%%%%
+    % Highlights box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        Highlights
+        \begin{itemize}
+          \item \cite{Sao-JieChen2000}
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Low points box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        \footnotesize
+        Low points
+        \begin{itemize}
+          \item Not enough time spent on slide deck
+          \item Lack of backgroung on graph theory
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Deliverables
+    %%%%%%%%%%%%%%%%%%
+    \begin{minipage}[b][0.25\textheight][t]{1.1\linewidth}
+      \footnotesize
+      \begin{tabularx}{\linewidth}{|X|l|X|X|} \hline
+        & Planned & Due Date & Status \\ \hline
+        Slide deck & 23/11 & 23/11 & Under construction\\ \hline
+      \end{tabularx}
+    \end{minipage}
+
+  \end{minipage}
+\end{frame}
+
+\bibliographystyle{plain}
+\bibliography{../thesis/bibliography}
+
+
+\end{document}
