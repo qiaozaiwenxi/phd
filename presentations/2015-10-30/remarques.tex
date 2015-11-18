@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+% \author{Quentin Delhaye}
+% \date{October 25th, 2015}
+\title{Remarques sur la présentation du 30 octobre 2015}
+
+\begin{document}
+\maketitle
+
+Il faut commencer par donner un contexte top-level afin de présenter la problématique.
+Dans mon cas, il s'agit de parler des architecture IC résolument 2D à l'heure actuelle.
+Ce à quoi on veut arriver, c'est d'utiliser la même architecture, mais répartie en trois dimensions, typiquement sur deux étages.
+L'intérêt d'exploiter cette troisième dimension est de pouvoir faire tenir une architecture donnée dans un footprint restreint.\newline{}
+
+En quoi est-ce un nouveau problème ?
+Pour le moment, on se concentre soit uniquement sur le design 2D, soit sur des architectures pensées pour la 3D. L'intérêt de ce problème, c'est d'exploiter des architectures déjà existantes en 2D et de les convertir en 3D, ou tout du moins de décharger le design du soucis 3D.
+Dans l'absolu, ce serait bien d'avoir conscience de la nature tridimensionnelle de la puce au moment de sa conception, mais personne n'y pense actuellement, ça demande un overhead trop important sans outils spécialisés.
+~\newline{}
+
+Des applications réelles sont tout à fait envisageables et intéressent IMEC.\newline{}
+
+Il faut davantage mettre en avant la collaboration avec Ken. Il s'occupe du clustering, tandis que je me concentre sur le partitionnement.
+Si on se replace dans un workflow complet (synthèse, clustering, floorplaning, partitioning), on s'occupe bien d'étapes distinctes.\newline{}
+
+Tout le monde n'est pas familier avec la fabrication de puces en trois dimensions.
+Il est donc utile de revenir sur les techniques existantes (back-to-face, face-to-face, etc.).
+De là, on peut se dire qu'il serait sans doute plus simple de tout faire en monolithique, c'est-à-dire de directement superposer les couches de transistors séparées par un fin interconnect, et ensuite ajouter au-dessus les metal layers.
+L'un des désavantages d'un tel assemblage, c'est la dissipation thermique qui serait beaucoup plus difficile à gérer.
+Il faudrait aussi concevoir des lignes d'assemblage (des fabs) spécialement pour ça.
+Avec les techniques 3D de « fusion », on peut fabriquer les deux dies sur deux wafers différents, comme des puces traditionnelles, puis seulement les assembler via l'une des techniques évoquées plus haut.
+~\newline{}
+
+Parmi les objectifs de ce travail, on peut compter :
+\begin{itemize}
+  \item Diminuer la longueur des interconnect.
+  \item Diminuer le nombre des interconnect.
+  \item Analyser le critical path et le réduire.
+\end{itemize}
+Concernant le critical path, il est intéressant de remarquer quel passage en trois dimensions peut avoir pour effet de réduire sa longueur~; deux blocs connectés qui étaient diamétralement opposés en 2D peuvent se retrouver superposés en 3D.
+~\newline{}
+
+La présentation doit absolument être plus visuelle, comporter plus d'images.
+~\newline{}
+
+Les problématiques annexes sont multiples~:
+\begin{itemize}
+  \item Congestions locales
+  \item Besoins spécifiques de certains clusters
+  \item etc.
+\end{itemize}
+
+\end{document}

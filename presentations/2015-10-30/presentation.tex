@@ -1,0 +1,187 @@
+\documentclass[xcolor={x11names, rgb, usenames, dvipsnames}]{beamer}
+% Beamer loads xcolor by default. Do not load it a second time using \usepackage
+
+\usepackage[francais, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+% \pgfplotsset{compat=1.12}
+\usetikzlibrary{patterns}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+
+
+\setbeamertemplate{bibliography item}{[\theenumiv]}
+
+%\usetheme{Warsaw}
+% \usetheme{Boadilla}
+% \usetheme{Antibes}
+\usetheme{CambridgeUS}
+% \usecolortheme{dolphin}
+\usecolortheme{dolphin}
+% \usetheme{Berlin}
+% \usetheme{Madrid}
+% \setbeamertemplate{footline}[frame number]
+
+
+%http://tex.stackexchange.com/questions/160825/modifying-margins-for-one-slide
+\newcommand\Wider[2][3em]{%
+\makebox[\linewidth][c]{%
+  \begin{minipage}{\dimexpr\textwidth+#1\relax}
+  \raggedright#2
+  \end{minipage}%
+  }%
+}
+
+
+
+
+% http://tex.stackexchange.com/questions/116077/presentation-beamer-title-page
+\makeatletter
+\newcommand\titlegraphicii[1]{\def\inserttitlegraphicii{#1}}
+\titlegraphicii{}
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vspace{-2.5em}
+   {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\hfill\inserttitlegraphicii\par}
+  \vskip2.5em
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%\vskip0.5em
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+  \end{centering}
+  %\vfill
+}
+\makeatother
+
+\author{Quentin Delhaye}
+\title[Partitioning for 3D stacking]{Automated System Partitioning \\ for Efficient 3D Circuit Integration \\\rule{2cm}{0.3pt} ~\\ Work presentation}
+% \subtitle{}
+\institute[BEAMS]{Université Libre de Bruxelles}
+\date{October 30th, 2015}
+
+% \titlegraphic{\includegraphics[width=1.5cm]{ulbnorm}}
+% \titlegraphicii{\includegraphics[width=1.5cm]{logo-polytech-seul}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% data
+%%%%%%%%%%%%%%%%%%%%%%%%
+\def\temperaturedata{temperaturesOslo.txt}
+\tikzstyle{maxmark} = [mark=*,mark options={color=red,scale=15}]
+\tikzstyle{minmark} = [mark=*,mark options={color=blue,scale=15}]
+
+% Lists
+% \def\labelitemi{$\blacktriangleright$}
+
+% \AtBeginSection[]
+% {
+%   \begin{frame}
+%   \frametitle{Contents}
+%   \tableofcontents[currentsection]
+%   \end{frame}
+% }
+
+
+\begin{document}
+
+\begin{frame}[plain, noframenumbering]
+\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents[hideallsubsections]
+	% \tableofcontents
+\end{frame}
+
+% \section{Presentation}
+% \begin{frame}
+%   \frametitle{Presentation}
+%   \begin{itemize}
+%     \item Master in Computer Science and Engineering (2015)
+%     \item Teaching assistant in applied electronics, real-time systems, etc.
+%   \end{itemize}
+% \end{frame}
+
+
+\section{Context}
+
+\begin{frame}
+\frametitle{Context}
+\begin{itemize}
+	\item Partition integrated circuits and stack the partitions in 3D
+  \item Find clever ways to set the weights of the equivalent graph
+\end{itemize}
+\end{frame}
+
+\section{Work}
+\begin{frame}
+  \frametitle{Work done so far}
+  \begin{itemize}
+    \item Using metis and hmetis to partition architectures (MPSoC, OpenMSP, RTX, SPC)
+    \item Considerations: Area, power, wire length, number of connections, etc.
+    \item Attempts at asymmetrical partitioning
+  \end{itemize}
+\end{frame}
+
+\section{Focus}
+\begin{frame}
+  \frametitle{Focus}
+  \begin{itemize}
+    \item Maxcut algorithms (linear programming, semidefinite programming, heuristics)
+    \item Graph partitioning methods (single and multiweighted)
+    \item Explore existing implementations of the above (Metis, Party, Scotch, etc.)
+  \end{itemize}
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 				BACKUP SLIDES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \begin{frame}[noframenumbering]
+% \frametitle{Software GCM}
+% 	\begin{figure}
+% 	\input{ipsec-ping-benchmark-gcm}
+% 	\caption{Software: asm kernel module mode GCM\newline{} Hardware: AES IP core mode CBC}
+% 	\end{figure}
+% \end{frame}
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section*{References}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nocite*{}
+% \bibliographystyle{plain}
+% \bibliography{bibliography}
+
+\end{document}
