@@ -11,8 +11,8 @@
 \usepackage[toc, nonumberlist]{glossaries}
 % \gls{label} to invoke the entry.
 % \glsreset{label} to reset the first occurence of the entry.
-% \arclong{label} to print the long version of the acronym.
-% \arcshort{label} to print the short version of the acronym.
+% \acrlong{label} to print the long version of the acronym.
+% \acrshort{label} to print the short version of the acronym.
 
 \makeglossaries
 \include{glossary}
@@ -101,6 +101,12 @@ Each $L$ steps, the temperature decreases, lowering the probability to accept a 
 The stopping condition can be a number of steps from the begining or a number a steps without enough improvement of the solution.
 
 \subsubsection{Tabu Search}
+A \acrlong{ts}, as its name and \cite{Pirlot1996} indicate, is based on a tabu of some sort.
+We will proceed like for a regular local search, the difference being that we establish a tabu list that prevents from cycling through the same solutions.
+In this list, we could simply store the $L$ last visited solutions, forbidding them.
+But this is still not good enough and performs poorly in practice.
+An other approach is the forbid \textit{movements}, \textit{e.g.} changing some coordinate from $0$ to $1$.
+However, should a potential solution forbidden by the tabu list be so good according to some ``aspiration level", the tabu can be overlooked and the solution be chosen.
 
 \subsubsection{Genetic Algorithms}
 
