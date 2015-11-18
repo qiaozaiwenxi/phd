@@ -1,0 +1,132 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+% \usepackage[xindy, toc, nonumberlist]{glossaries}
+\usepackage[toc, nonumberlist]{glossaries}
+% \gls{label} to invoke the entry.
+% \glsreset{label} to reset the first occurence of the entry.
+% \arclong{label} to print the long version of the acronym.
+% \arcshort{label} to print the short version of the acronym.
+
+\makeglossaries
+\include{glossary}
+
+% \author{Quentin Delhaye}
+% \date{October 25th, 2015}
+\title{State of the Art}
+
+\begin{document}
+\maketitle
+
+\section{Recurring notions}
+\subsection{Complexity}
+
+
+\subsubsection{Non-deterministic Turing Machine}
+In this kind of Turing machines, the transition \textit{rule} becomes a transition \textit{function}.
+It means that at a given state, with a given symbol, it has many possible execution instead of just the one with a deterministic Turing machine.
+We can see that as the machine always taking the best possible guess, leading to a finishing state in the end, or the machine is branching into all the possible states from the point of decision.
+
+\subsubsection{NP}
+Acronym for ``non-deterministic polynomial-time".
+A ``yes"-instance can be found in polynomial-time by a non-deterministic Turing machine, and this solution can be verified in polynomial-time by a deterministic Turing machine.
+
+
+\subsubsection{NP Hard}
+Acronym for ``non-deterministic polynomial-time hard".
+~\newline{}\noindent Note: it has never been proven that there is no polynomial-time algorithm to solve those problems.
+Informally, it means that those problems are at least as hard as the hardest problems in NP.
+
+\subsubsection{NP Complete}
+A problem is NP complete when it is both NP and NP hard at the same time.
+Although the solution can be verified in polynomial time, there is no known algorithm to find this solution quickly.
+The problem to know if such algorithm exist is the ``P $=$ NP" problem.
+
+An NP-complete problem differs from a regular NP problem in the sense that a problem is NP-complete if every other problem in NP can be reduced to it.ea
+
+\subsubsection{P=NP}
+Problem asking if there exist polynomial time algorithm solving NP-complete problems (an by corollary all NP problems).
+
+\subsection{Optimization}
+
+\subsubsection{Linear Programming}
+Optimization of a problem for which the requirements are represented using linear relationships.
+
+\subsubsection{Semidefinite Programming}
+Extends the linear programming problems, but using a positive semidefinite matrix as unknown value, instead of a vector of real integers.
+
+\section{Graph Partitioning}
+For a graph $G = (V, E)$, with $V$ the set of $n$ vertices and $E$ the set of edges.
+
+\subsection{Balanced partition problem}
+In a $(k, v)$ balanced partition problem, we want to partition $G$ into $k$ partitions of at most size $v\cdot\frac{n}{k}$, minimizing the capacity of the edges spanning multiple partitions~\cite{Andreev:2004:BGP:1007912.1007931}.
+This could allow to perform unbalanced paritioning based on the factor $v$; if $v = 1$, all partitions will have the same size (considering $v \in \mathbb{N}_0$).
+However, it is still an upper bound, not an objective.
+All the partitions will have the same freedom in size, this does not enforce an asymmetry in the partitions size.
+This problem is also know as bicriteria approximation or ressource augmentation.
+
+\subsection{Algorithms}
+\cite{SungKyuLim:ECE6133:partitioning}
+\subsubsection{Kernighan-Lin Algorithm}
+
+\subsubsection{Fiduccia-Mattheyses Algorithm}
+
+\subsubsection{Hagen-Kahng EIG Partitioning}
+
+\subsection{Metaheuristics}
+
+\paragraph{Local Search Strategy}
+A local search will look in the neighbourhood of the current solution for a better one.
+If there is nothing better in the direct vicinity of the position, just stop.
+As \cite{Pirlot1996} says, this trategy is also known as ``descent" strategy and is basically what was done in \texttt{phoney} when we tried to disbalance the energy repartition in the partitions, while keeping the area balanced.
+
+The problem of this strategy is that it will get stuck in local minima.
+Escaping requires a deterioration of the solution, which is done by \gls{sa} and \gls{ts}.
+
+\subsubsection{Simulated Annealing}
+\cite{Pirlot1996} presents this heuristic kind of like the evolution of a local search.
+Instead of looking in the neighbourhood of the current solution, we pick one randomly.
+If it's better, keep it, otherwise we have a probabilty $p$ to keep it, $1-p$ to discard it.
+$p$ is usually a Boltzmann-like distribution:
+\[p(n) = \exp{\left(-\frac{1}{T(n)} \Delta F_n\right)}\]
+with $n$ the current step, $\Delta F_n = F(x) - F(x_n)$ the distance from the current solution, and $T(n)$ is what we could call the ``temperature" by analogy with the annealing of steel.
+Each $L$ steps, the temperature decreases, lowering the probability to accept a worse solution.
+
+The stopping condition can be a number of steps from the begining or a number a steps without enough improvement of the solution.
+
+\subsubsection{Tabu Search}
+
+\subsubsection{Genetic Algorithms}
+
+
+
+\section{Electronic Design Automation}
+EDA is also known as ``Electronic Computer-Aided Design" (ECAD).
+
+\subsection{Conferences}
+\subsubsection{Design Automation Conference}
+San Diego, Anaheim and San Francisco in June.
+\subsubsection{International Conference on computer-Aided Design}
+\subsubsection{Design Automation an Test in Europe}
+\subsubsection{Asia and South Pacific Design Automation Conference}
+\subsubsection{International Symposium on Quality Electronic Design}
+
+
+
+\newpage
+
+\glsaddall
+\printglossaries
+
+\newpage
+% \bibliographystyle{plainnat}
+\bibliographystyle{acm}
+\bibliography{../thesis/bibliography.bib}
+
+\end{document}
