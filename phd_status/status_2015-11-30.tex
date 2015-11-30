@@ -1,0 +1,89 @@
+\documentclass[xcolor={x11names, rgb, usenames, dvipsnames}]{beamer}
+% Beamer loads xcolor by default. Do not load it a second time using \usepackage
+
+\usepackage[francais, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{pdfpages}
+% \usepackage{enumitem}
+\setlength{\leftmargini}{1em}%Shift the \item to the left.
+
+\setbeamertemplate{navigation symbols}{}
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+
+\begin{document}
+
+\begin{frame}[plain, noframenumbering]
+  \frametitle{Progress (2015-11-30)}
+  \fbox{
+    \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}
+      Status
+      \begin{itemize}
+        \item According to B. Fortz, the size of the trees would require metaheuristics.
+        \item Brief exploration of MH (SA, TS, GA), sent to B. Sartori.
+        \item Need to dive into METIS to understand the type of algo used.
+      \end{itemize}
+      % \vspace*{0.8\textheight}
+      \hfill
+    \end{minipage}
+  }
+  \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}%
+
+    %%%%%%%%%%%%%%%%%%
+    % Highlights box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        Highlights
+        \begin{itemize}
+          \item Meeting with B. Fortz (very interested in the project).
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Low points box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        Low points
+        \begin{itemize}
+          \item Slide deck is late.
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Deliverables
+    %%%%%%%%%%%%%%%%%%
+    \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+      \begin{tabularx}{1.1\linewidth}{|X|l|X|l|} \hline
+        & Planned & Due Date & Status \\ \hline
+        Slide deck & 07/12 & 23/11 & Late\\ \hline
+      \end{tabularx}
+    \end{minipage}
+
+  \end{minipage}
+\end{frame}
+
+{
+% http://tex.stackexchange.com/questions/11458/error-when-inserting-a-pdf-page-into-a-beamer-presentation/11501#11501
+\setbeamercolor{background canvas}{bg=}
+\includepdf[pages={1-5}]{slide_deck_2015-11-30.pdf}
+}
+
+
+\end{document}
