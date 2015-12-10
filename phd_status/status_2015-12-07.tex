@@ -1,0 +1,84 @@
+\documentclass[xcolor={x11names, rgb, usenames, dvipsnames}]{beamer}
+% Beamer loads xcolor by default. Do not load it a second time using \usepackage
+
+\usepackage[francais, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+% \usepackage{enumitem}
+\setlength{\leftmargini}{1em}%Shift the \item to the left.
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}{[\theenumiv]}
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+
+\begin{document}
+
+\begin{frame}[plain, noframenumbering]
+  \frametitle{Progress (2015-12-07)}
+  \fbox{
+    \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}
+      Status
+      \begin{itemize}
+        \item Heuristics are mostly used in VLSI (Kernighan-Lin \& Fiduccia-Mattheyses). Investigate why.
+      \end{itemize}
+      % \vspace*{0.8\textheight}
+      \hfill
+    \end{minipage}
+  }
+  \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}%
+
+    %%%%%%%%%%%%%%%%%%
+    % Highlights box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        Highlights
+        \begin{itemize}
+          \item \cite{Gonzalez2007}, chap. 61, ``Hypergraph Partitioning and Clustering"
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Low points box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+        Low points
+        \begin{itemize}
+          \item Slow gathering of doc, but getting better.
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Deliverables
+    %%%%%%%%%%%%%%%%%%
+    \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+      \footnotesize
+      \begin{tabularx}{1.1\linewidth}{|X|X|X|l|} \hline
+        & Planned & Due Date & Status \\ \hline
+        Slide deck & Near future & 23/11 & In progress\\ \hline
+      \end{tabularx}
+    \end{minipage}
+
+  \end{minipage}
+\end{frame}
+
+\bibliographystyle{plain}
+\bibliography{status_2015-12-07}
+
+\end{document}
