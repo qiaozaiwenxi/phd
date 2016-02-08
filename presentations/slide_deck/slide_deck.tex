@@ -15,8 +15,14 @@
 \usepackage{multirow}
 \usepackage{array}
 
+\usepackage{amsthm}
+
+\usepackage{setspace}
+
+
 
 \setbeamertemplate{bibliography item}{[\theenumiv]}
+\setbeamertemplate{theorems}[numbered]
 \usenavigationsymbolstemplate{}
 
 %\usetheme{Warsaw}
@@ -97,6 +103,7 @@
 % }
 
 
+
 \begin{document}
 
 \begin{frame}[plain, noframenumbering]
@@ -130,16 +137,19 @@
 
 \begin{frame}
   \frametitle{3D IC}
+  What is a 3D IC?
+
   \begin{description}
     \item[Monolithic]
       \begin{itemize}
+        \item Built on a single wafer, one layer at a time
         \item Lack of methodologies
         \item Thermal dissipation problems
         \item Manufacturing difficulties
       \end{itemize}
     \item[Stacked]
       \begin{itemize}
-        \item Base on 2D design
+        \item Based on 2D design
         \item Separate die manufacturing
         \item Die stacking
       \end{itemize}
@@ -162,6 +172,68 @@
 \end{frame}
 
 
+\section{Definitions}
+\begin{frame}
+  \begin{definition}[Disjoint Partitions, \cite{Papa2007}]
+    % Note: to span a definition on several pages, we can do something like:
+    % \begi{frame}
+    %   \begin{definition}
+    %     foo
+    %   \end{definition}
+    % \end{frame}
+    % addtocounter{definition}{-1}
+    % \begin{frame}
+    %   \begin{definition}[cont.]
+    %     bar
+    %   \end{definition}
+    % \end{frame}
+
+    \setstretch{1.5}% Change the line spacing for this group, requires setspace package.
+    A k-tuple $P=(p_0, ..., p_{k-1})$  with each $p_i$ a set of vertices such that $\bigcup_{i=0}^{k-1} p_i = V$ with $\bigcap_{i=0}^{k-1} p_i = \emptyset$
+    % Note: if you want the limits above the symbol: \bigcup\limits_{i=0}^{k-1}
+
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}[k-Way Partitioning]\cite{Papa2007}
+    A function of the form $\delta$
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}[Hypergraph]\cite{Papa2007}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}[Cut]\cite{Papa2007}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}[Sum of External Degrees]
+    As presented by \cite{Karypis1998:hmetis}:
+    \[ \sum_{i=1}^k |E(P_i)| \]
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}[Scaled Cost]\cite{Karypis1998:hmetis}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}[Absorption]\cite{Karypis1998:hmetis}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}[k-Way Hypergraph Partitioning Problem]\cite{Papa2007}
+  \end{definition}
+\end{frame}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -180,12 +252,12 @@
 
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section*{References}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{References}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \nocite*{}
-% \bibliographystyle{plain}
-% \bibliography{bibliography}
+\bibliographystyle{plain}
+\bibliography{../../thesis/bibliography}
 
 \end{document}
