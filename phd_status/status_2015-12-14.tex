@@ -1,0 +1,85 @@
+\documentclass[xcolor={x11names, rgb, usenames, dvipsnames}]{beamer}
+% Beamer loads xcolor by default. Do not load it a second time using \usepackage
+
+\usepackage[francais, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+% \usepackage{enumitem}
+\setlength{\leftmargini}{1em}%Shift the \item to the left.
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}{[\theenumiv]}
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+
+\begin{document}
+
+\begin{frame}[plain, noframenumbering]
+  \frametitle{Progress (2015-12-14)}
+  \fbox{
+    \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}
+      Status
+      \begin{itemize}
+        \item Heuristics are mostly used in VLSI because they require less computing power.
+        Partitioning problems are clustered to be solved in a realistic amount of time, then the solution is refined by uncoarsening the graph.
+        \item Meta-heuristics in VLSI are barely a few years old.
+        \item F-M heuritic is designed to be multi-weight and balance constrained, but not always fully implemented.
+      \end{itemize}
+      % \vspace*{0.8\textheight}
+      \hfill
+    \end{minipage}
+  }
+  \begin{minipage}[b][0.9\textheight][t]{0.45\linewidth}%
+
+    %%%%%%%%%%%%%%%%%%
+    % Highlights box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.15\textheight][t]{\linewidth}
+        Highlights \& Low points
+        \begin{itemize}
+          \item Nothing particular
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % TO-DO-box
+    %%%%%%%%%%%%%%%%%%
+    \fbox{
+      \begin{minipage}[b][0.50\textheight][t]{\linewidth}
+        TODO
+        \begin{itemize}
+          \item Check the heuristics used by the most popular soft implementations
+          \item Find a complete implementation of F-M, or find an open source partial one, or develop a new one.
+        \end{itemize}
+      \end{minipage}
+    }
+
+    %%%%%%%%%%%%%%%%%%
+    % Deliverables
+    %%%%%%%%%%%%%%%%%%
+    \begin{minipage}[b][0.25\textheight][t]{\linewidth}
+      \footnotesize
+      \begin{tabularx}{1.1\linewidth}{|X|X|X|l|} \hline
+        & Planned & Due Date & Status \\ \hline
+        Slide deck & Near future & 23/11 & In progress\\ \hline
+      \end{tabularx}
+    \end{minipage}
+
+  \end{minipage}
+\end{frame}
+
+\end{document}
