@@ -23,6 +23,8 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
+
 
 \section{Recurring notions}
 \subsection{Complexity}
@@ -92,7 +94,7 @@ Escaping requires a deterioration of the solution, which is done by \gls{sa} and
 \subsubsection{Simulated Annealing}
 \cite{Pirlot1996} presents this heuristic kind of like the evolution of a local search.
 Instead of looking in the neighbourhood of the current solution, we pick one randomly.
-If it's better, keep it, otherwise we have a probabilty $p$ to keep it, $1-p$ to discard it.
+If it's better, keep it, otherwise we have a probabilty $p$ to keep it, $(1-p)$ to discard it.
 $p$ is usually a Boltzmann-like distribution:
 \[p(n) = \exp{\left(-\frac{1}{T(n)} \Delta F_n\right)}\]
 with $n$ the current step, $\Delta F_n = F(x) - F(x_n)$ the distance from the current solution, and $T(n)$ is what we could call the ``temperature" by analogy with the annealing of steel.
@@ -111,6 +113,17 @@ However, should a potential solution forbidden by the tabu list be so good accor
 \subsubsection{Genetic Algorithms}
 
 
+
+
+\section{Manufacturing}
+
+\subsection{Wafer to wafer}
+
+\subsection{Die to die}
+
+\subsection{Die to wafer}
+
+\subsection{Monolithic}
 
 \section{Electronic Design Automation}
 EDA is also known as ``Electronic Computer-Aided Design" (ECAD).
