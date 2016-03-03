@@ -25,6 +25,14 @@
 \maketitle
 \tableofcontents
 
+\section{Questions}
+\subsection{Why do we even bother with hypergraphs?}
+All hypergraphs can be represented as regular graphs, and lots of tools already exists to handle graphs.
+When we want to express the wire length between two nodes, although it can easily be done using graph's edge weights, it is not expressable as a hypergraph's hyperedge weight, the hyperedge linking several nodes all connected with different wire lengths.
+
+However, when tackling the partitioning problem, working with hypergraphs gives the vertices belonging to the same hyperedge a coherence.
+In the context of 3D ICs, we work with buses connecting blocks of gates, and we want them to be halded as such.
+
 
 \section{Recurring notions}
 \subsection{Complexity}
