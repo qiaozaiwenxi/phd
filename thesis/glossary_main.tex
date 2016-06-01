@@ -1,0 +1,21 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+% \usepackage[bitstream-charter]{mathdesign}
+\usepackage[francais,english]{babel}
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+
+% \usepackage[xindy, toc, nonumberlist]{glossaries}
+\usepackage[toc, nonumberlist]{glossaries}
+\makeglossaries
+\include{glossary}
+
+\begin{document}
+
+
+\glsaddall
+\printglossaries
+
+\end{document}
