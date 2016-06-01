@@ -6,13 +6,29 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[breaklinks=true,hidelinks]{hyperref}
+% \usepackage[breaklinks=true,hidelinks]{hyperref}
+\usepackage[breaklinks=true]{hyperref}
 % \usepackage[xindy, toc, nonumberlist]{glossaries}
 \usepackage[toc, nonumberlist]{glossaries}
 % \gls{label} to invoke the entry.
 % \glsreset{label} to reset the first occurence of the entry.
 % \acrlong{label} to print the long version of the acronym.
 % \acrshort{label} to print the short version of the acronym.
+
+\usepackage[numbers]{natbib}
+\usepackage{amsthm}%theorems
+\newtheoremstyle{customdef}%
+	{\topsep}% above the theorem
+	{\topsep}% below the theorem
+	{\itshape}% body
+	{0pt}% indent
+	{\bfseries}% head
+	{\newline}% punctuation between head and body
+	{ }% Space after theorem head
+	{\thmname{#1}\thmnumber{ #2}: \thmnote{#3}}
+\theoremstyle{customdef}
+\newtheorem{definition}{Definition}
+
 
 \makeglossaries
 \include{glossary}
@@ -31,8 +47,22 @@ All hypergraphs can be represented as regular graphs, and lots of tools already 
 When we want to express the wire length between two nodes, although it can easily be done using graph's edge weights, it is not expressable as a hypergraph's hyperedge weight, the hyperedge linking several nodes all connected with different wire lengths.
 
 However, when tackling the partitioning problem, working with hypergraphs gives the vertices belonging to the same hyperedge a coherence.
-In the context of 3D ICs, we work with buses connecting blocks of gates, and we want them to be halded as such.
+In the context of 3D ICs, we work with buses connecting blocks of gates, and we want them to be handled as such.
 
+Moreover, \citet{Ihler1993} demonstrated that the mincut partition obtained for a circuit is not as accurate as would be a hypergraph's.
+More precisely, they define a \textit{cut-model} in definitions~\ref{def:cut-model} and \ref{def:cut-model-formal}, and show that there is no such thing in general.
+
+\begin{definition}[Cut-model]\label{def:cut-model}
+An edge-weighted graph $(V,E)$ is a cut-model for an edge-weighted hypergraph $(V,H)$ if the weight of the edges cut by any bipartition of $V$ in the graph is the same as the weight of the hyperedges cut by the same bipartition in the hypergraph.
+\end{definition}
+
+A more formal way to define the principle is as follows~:
+\begin{definition}[Cut-model and mincut-model]\label{def:cut-model-formal}
+A graph $(V, E)$ on $k$ vertices is a cut-model (for a unit weight hyperedge on $k$ vertices) if the weight of any cut induced by a non-empty proper subset $W$ of $V$ is equal to one.
+
+A graph $(V \cup D,E)$ on $k+d$ vertices is called a min-cut-model (for a unit weight hyperedge on $k$ vertices) if for every non-empty subset $W$ of $V$ we have that the weight of any cut with minimum weight (mincut) under those separating $W$ from $V \setminus W$ is equal to one.
+It must be zero fo $W=\emptyset$.%Note: other symbol for empty set: \varnothing
+\end{definition}
 
 \section{Recurring notions}
 \subsection{Complexity}
@@ -152,8 +182,8 @@ San Diego, Anaheim and San Francisco in June.
 \printglossaries
 
 \newpage
-% \bibliographystyle{plainnat}
-\bibliographystyle{acm}
+\bibliographystyle{plainnat}
+% \bibliographystyle{acm}
 \bibliography{../thesis/bibliography.bib}
 
 \end{document}
