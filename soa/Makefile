@@ -18,4 +18,4 @@ labo: *.tex
 
 clean:
 	rm -f soa.pdf
-	rm -f *.idx *.aux *.log *.nav *.out *.snm *.toc
+	rm -f *.idx *.aux *.log *.nav *.out *.snm *.toc *.bbl *.glo *.glg *.ist *.fls *.fdb_latexmk *.blg *.gls

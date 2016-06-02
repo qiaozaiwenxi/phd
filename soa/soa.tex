@@ -6,8 +6,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-% \usepackage[breaklinks=true,hidelinks]{hyperref}
-\usepackage[breaklinks=true]{hyperref}
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+% \usepackage[breaklinks=true]{hyperref}
 % \usepackage[xindy, toc, nonumberlist]{glossaries}
 \usepackage[toc, nonumberlist]{glossaries}
 % \gls{label} to invoke the entry.
@@ -15,7 +15,8 @@
 % \acrlong{label} to print the long version of the acronym.
 % \acrshort{label} to print the short version of the acronym.
 
-\usepackage[numbers]{natbib}
+\usepackage[]{natbib}
+% \usepackage[numbers]{natbib}
 \usepackage{amsthm}%theorems
 \newtheoremstyle{customdef}%
 	{\topsep}% above the theorem
@@ -41,6 +42,34 @@
 \maketitle
 \tableofcontents
 
+
+
+
+
+% ######     #########  #########  ########   ##      ##  ########   ##########  ########     #####    ##      ##  
+% ##    ##   ##         ##            ##      ###     ##     ##          ##         ##      ##     ##  ###     ##  
+% ##     ##  ##         ##            ##      ## ##   ##     ##          ##         ##      ##     ##  ## ##   ##  
+% ##     ##  ######     ######        ##      ##  ##  ##     ##          ##         ##      ##     ##  ##  ##  ##  
+% ##     ##  ##         ##            ##      ##   ## ##     ##          ##         ##      ##     ##  ##   ## ##  
+% ##    ##   ##         ##            ##      ##     ###     ##          ##         ##      ##     ##  ##     ###  
+% ######     #########  ##         ########   ##      ##  ########       ##      ########     #####    ##      ##  
+
+
+\section{Big words, big definitions}
+
+
+
+
+
+%   #####    ##     ##  #########   #######   ##########  ########     #####    ##      ##  
+% ##     ##  ##     ##  ##         ##     ##      ##         ##      ##     ##  ###     ##  
+% ##     ##  ##     ##  ##         ##             ##         ##      ##     ##  ## ##   ##  
+% ##     ##  ##     ##  ######      #######       ##         ##      ##     ##  ##  ##  ##  
+% ##    # #  ##     ##  ##                ##      ##         ##      ##     ##  ##   ## ##  
+%   #### #   ##     ##  ##         ##     ##      ##         ##      ##     ##  ##     ###  
+%         #   #######   #########   #######       ##      ########     #####    ##      ##  
+
+
 \section{Questions}
 \subsection{Why do we even bother with hypergraphs?}
 All hypergraphs can be represented as regular graphs, and lots of tools already exists to handle graphs.
@@ -63,6 +92,20 @@ A graph $(V, E)$ on $k$ vertices is a cut-model (for a unit weight hyperedge on 
 A graph $(V \cup D,E)$ on $k+d$ vertices is called a min-cut-model (for a unit weight hyperedge on $k$ vertices) if for every non-empty subset $W$ of $V$ we have that the weight of any cut with minimum weight (mincut) under those separating $W$ from $V \setminus W$ is equal to one.
 It must be zero fo $W=\emptyset$.%Note: other symbol for empty set: \varnothing
 \end{definition}
+
+
+
+
+
+
+% ##      ##    #####    ##########  ########     #####    ##      ##   #######   
+% ###     ##  ##     ##      ##         ##      ##     ##  ###     ##  ##     ##  
+% ## ##   ##  ##     ##      ##         ##      ##     ##  ## ##   ##  ##         
+% ##  ##  ##  ##     ##      ##         ##      ##     ##  ##  ##  ##   #######   
+% ##   ## ##  ##     ##      ##         ##      ##     ##  ##   ## ##         ##  
+% ##     ###  ##     ##      ##         ##      ##     ##  ##     ###  ##     ##  
+% ##      ##    #####        ##      ########     #####    ##      ##   #######   
+
 
 \section{Recurring notions}
 \subsection{Complexity}
@@ -101,6 +144,20 @@ Optimization of a problem for which the requirements are represented using linea
 \subsubsection{Semidefinite Programming}
 Extends the linear programming problems, but using a positive semidefinite matrix as unknown value, instead of a vector of real integers.
 
+
+
+
+
+
+% ########      ###     ########   ##########  ########   ##########  ########     #####    ##      ##  ########   ##      ##   #######   
+% ##     ##    ## ##    ##     ##      ##         ##          ##         ##      ##     ##  ###     ##     ##      ###     ##  ##         
+% ##     ##   ##   ##   ##     ##      ##         ##          ##         ##      ##     ##  ## ##   ##     ##      ## ##   ##  ##         
+% #######    ##     ##  ########       ##         ##          ##         ##      ##     ##  ##  ##  ##     ##      ##  ##  ##  ##   ####  
+% ##         #########  ##   ##        ##         ##          ##         ##      ##     ##  ##   ## ##     ##      ##   ## ##  ##     ##  
+% ##         ##     ##  ##    ##       ##         ##          ##         ##      ##     ##  ##     ###     ##      ##     ###  ##     ##  
+% ##         ##     ##  ##     ##      ##      ########       ##      ########     #####    ##      ##  ########   ##      ##  ########   
+
+
 \section{Graph Partitioning}
 For a graph $G = (V, E)$, with $V$ the set of $n$ vertices and $E$ the set of edges.
 
@@ -110,14 +167,17 @@ This could allow to perform unbalanced paritioning based on the factor $v$; if $
 However, it is still an upper bound, not an objective.
 All the partitions will have the same freedom in size, this does not enforce an asymmetry in the partitions size.
 This problem is also know as bicriteria approximation or ressource augmentation.
+While we are talking about vocabulary, when $k=2$, we have a \textit{bipartition problem}, and if $k>2$, we are proceeding to a \textit{k-way partitioning}.
 
 \subsection{Algorithms}
-\cite{SungKyuLim:ECE6133:partitioning}
-\subsubsection{Kernighan-Lin Algorithm}
+\cite{SungKyuLim:ECE6133:partitioning}, \cite{Lim2008}
+\subsubsection{Kernighan-Lin Algorithm~\citep*{Kernighan1970}}
 
-\subsubsection{Fiduccia-Mattheyses Algorithm}
+\subsubsection{Fiduccia-Mattheyses Algorithm~\citep*{Fiduccia1982}}
 
-\subsubsection{Hagen-Kahng EIG Partitioning}
+\subsubsection{EIG Algorithm~\citep*{Hagen1992}}
+
+\subsubsection{FBB Algorithm~\citep*{Yang1996}}
 
 \subsection{Metaheuristics}
 
@@ -153,6 +213,17 @@ However, should a potential solution forbidden by the tabu list be so good accor
 
 
 
+
+
+% ##       ##     ###     ##      ##  ##     ##  #########     ###      #######   ##########  ##     ##  ########   ########   ##      ##   #######   
+% ###     ###    ## ##    ###     ##  ##     ##  ##           ## ##    ##     ##      ##      ##     ##  ##     ##     ##      ###     ##  ##         
+% ## ## ## ##   ##   ##   ## ##   ##  ##     ##  ##          ##   ##   ##             ##      ##     ##  ##     ##     ##      ## ##   ##  ##         
+% ##  ###  ##  ##     ##  ##  ##  ##  ##     ##  ######     ##     ##  ##             ##      ##     ##  ########      ##      ##  ##  ##  ##   ####  
+% ##       ##  #########  ##   ## ##  ##     ##  ##         #########  ##             ##      ##     ##  ##   ##       ##      ##   ## ##  ##     ##  
+% ##       ##  ##     ##  ##     ###  ##     ##  ##         ##     ##  ##     ##      ##      ##     ##  ##    ##      ##      ##     ###  ##     ##  
+% ##       ##  ##     ##  ##      ##   #######   ##         ##     ##   #######       ##       #######   ##     ##  ########   ##      ##  ########   
+
+
 \section{Manufacturing}
 
 \subsection{Wafer to wafer}
@@ -162,6 +233,19 @@ However, should a potential solution forbidden by the tabu list be so good accor
 \subsection{Die to wafer}
 
 \subsection{Monolithic}
+
+
+
+
+
+% #########  ######        ###     
+% ##         ##    ##     ## ##    
+% ##         ##     ##   ##   ##   
+% ######     ##     ##  ##     ##  
+% ##         ##     ##  #########  
+% ##         ##    ##   ##     ##  
+% #########  ######     ##     ##  
+
 
 \section{Electronic Design Automation}
 EDA is also known as ``Electronic Computer-Aided Design" (ECAD).
@@ -176,13 +260,39 @@ San Diego, Anaheim and San Francisco in June.
 
 
 
+
+
+
+
+% ########   #########    #####    ########   ##         #########  
+% ##     ##  ##         ##     ##  ##     ##  ##         ##         
+% ##     ##  ##         ##     ##  ##     ##  ##         ##         
+% #######    ######     ##     ##  #######    ##         ######     
+% ##         ##         ##     ##  ##         ##         ##         
+% ##         ##         ##     ##  ##         ##         ##         
+% ##         #########    #####    ##         #########  #########  
+
+
+\section{Big names for big problems}
+
+\begin{description}
+
+	\item{Andrew B. Kahng}
+
+	\item{Charles J. Alpert}
+
+	\item{Sung Kyu Lim}
+
+	\item{Georges Karypis}
+\end{description}
+
 \newpage
 
 \glsaddall
 \printglossaries
 
 \newpage
-\bibliographystyle{plainnat}
+\bibliographystyle{abbrvnat}
 % \bibliographystyle{acm}
 \bibliography{../thesis/bibliography.bib}
 
