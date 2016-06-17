@@ -175,7 +175,21 @@ While we are talking about vocabulary, when $k=2$, we have a \textit{bipartition
 
 \subsubsection{Fiduccia-Mattheyses Algorithm~\citep*{Fiduccia1982}}
 
-\subsubsection{EIG Algorithm~\citep*{Wei1989}}
+\subsubsection{EIG Algorithm~\citep*{Hagen1992}}
+\citet{Hagen1992} showed that the second smallest eigenvalue of the connectivity matrix of the graph is a tight lower bound on the ratio cut metric.
+That metric is defined as $\frac{c(X,Y)}{|X||Y|}$ with $c(X, Y)$ the cutsize between the two partitions.
+
+Based on this result, they built an algorithm to make bipartition of graphs with minimal ratio cut.
+
+The idea is first to approximate the hypergraph with an undirected graph using a $k$-clique model.
+This model states that a clique with k nodes forms a $k$-clique, hence a hyperedge forms one as well.
+From this graph, we derive the degree matrix $D$ where  $d_{ii}$ is the sum of all the weights of the incident edges on node $i$.
+Similarly, we build the adjacent matrix $A$ where $a_{ij}$ gives the weight of the edge $(i, j)$.
+The Laplacian matrix $Q$ is then $Q = D - A$, from which we extract the eigenvector and its second smallest value.
+Using the ordered eigenvector, we then compute $n-1$ partitionings: $(\{v_1\}, \{v_2, ..., v_n\}), (\{v_1, v_2\}, \{v_3, ..., v_n\}), ..., (\{v_1, ..., v_{n-1}\}, \{v_n\})$.
+
+In the end, this method is particularly useful to set a lower bound on the ratio cut.
+
 
 \subsubsection{FBB Algorithm~\citep*{Yang1996}}
 
@@ -284,6 +298,9 @@ San Diego, Anaheim and San Francisco in June.
 	\item{Sung Kyu Lim}
 
 	\item{Georges Karypis}
+
+	\item{Shawki Areibi}
+	Tabu search and EIG-tabusearch fusion.
 \end{description}
 
 \newpage
