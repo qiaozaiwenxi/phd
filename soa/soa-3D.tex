@@ -1,0 +1,72 @@
+\documentclass[11pt,a4paper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+% \usepackage[breaklinks=true]{hyperref}
+% \usepackage[xindy, toc, nonumberlist]{glossaries}
+\usepackage[toc, nonumberlist]{glossaries}
+% \gls{label} to invoke the entry.
+% \glsreset{label} to reset the first occurence of the entry.
+% \acrlong{label} to print the long version of the acronym.
+% \acrshort{label} to print the short version of the acronym.
+
+\usepackage{textcomp}
+\usepackage{fullpage}
+
+\usepackage[]{natbib}
+% \usepackage[numbers]{natbib}
+\usepackage{amsthm}%theorems
+\newtheoremstyle{customdef}%
+	{\topsep}% above the theorem
+	{\topsep}% below the theorem
+	{\itshape}% body
+	{0pt}% indent
+	{\bfseries}% head
+	{\newline}% punctuation between head and body
+	{ }% Space after theorem head
+	{\thmname{#1}\thmnumber{ #2}: \thmnote{#3}}
+\theoremstyle{customdef}
+\newtheorem{definition}{Definition}
+
+
+% \makeglossaries
+% \include{glossary}
+
+% \author{Quentin Delhaye}
+% \date{October 25th, 2015}
+\title{Quick review of EU-supported 3D-IC projects}
+
+\begin{document}
+
+\maketitle
+
+\section*{CoolCube\textsuperscript{TM}}
+In the past few years, the CEA LETI has been working on a new way to integrate transistors in 3D: \cite{Clermidy2015}, \cite{Michailos2016}, \cite{Brunet2016}, \cite{Vinet2016}, \cite{Batude2015}.
+Their goal is to manufacture 3D monolithic chips using an innovative stacking techniques.
+However, they still face the problem of partitioning and gates repartition on the tiers.
+
+This project is partly funded by the Nano2017 program, the EQUIPEX FDSOI11 platform and the EU FP7 COMPOSE3 project\footnote{\url{http://cordis.europa.eu/project/rcn/111144_fr.html}}.\\
+
+FP7 Projects:
+\begin{itemize}
+	\item \textbf{FAB2ASM}: \textit{Efficient and Precise 3D Integration of Heterogeneous Microsystems from Fabrication to Assembly}\footnote{\url{http://cordis.europa.eu/project/rcn/94309_en.html}}.
+	\item \textbf{JEMSIP\_3D}: \textit{Joint Equipment and Materials for System-in-Package and 3D-Integration}\footnote{\url{http://cordis.europa.eu/project/rcn/201936_en.html}}.
+	\item \textbf{NANOPACK}: \textit{Nano Packaging Technology for Interconnect and Heat Dissipation}\footnote{\url{http://cordis.europa.eu/project/rcn/85245_en.html}}.
+	\item \textbf{ELITE}: \textit{Extended Large (3D) Integration TEchnology}\footnote{\url{http://cordis.europa.eu/project/rcn/85238_en.html}}.
+\end{itemize}
+~\\
+
+Horizon 2020 projects:
+\begin{itemize}
+	\item \textbf{TAKE5}: \textit{Technology Advances and Key Enablers for 5 nm}\footnote{\url{http://cordis.europa.eu/project/rcn/203403_en.html}}. This projects aims at the development of the 5nm node. Even though scaling is worth exploring, the 3D integration path is not to be left aside.
+\end{itemize}
+\newpage
+\bibliographystyle{abbrvnat}
+% \bibliographystyle{acm}
+\bibliography{../thesis/bibliography}
+\end{document}
