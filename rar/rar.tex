@@ -1,0 +1,115 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+% \usepackage[breaklinks=true]{hyperref}
+% \usepackage[xindy, toc, nonumberlist]{glossaries}
+\usepackage[toc, nonumberlist]{glossaries}
+% \gls{label} to invoke the entry.
+% \glsreset{label} to reset the first occurence of the entry.
+% \acrlong{label} to print the long version of the acronym.
+% \acrshort{label} to print the short version of the acronym.
+
+\usepackage{todonotes}
+
+\usepackage[]{natbib}
+% \usepackage[numbers]{natbib}
+\usepackage{amsthm}%theorems
+\newtheoremstyle{customdef}%
+	{\topsep}% above the theorem
+	{\topsep}% below the theorem
+	{\itshape}% body
+	{0pt}% indent
+	{\bfseries}% head
+	{\newline}% punctuation between head and body
+	{ }% Space after theorem head
+	{\thmname{#1}\thmnumber{ #2}: \thmnote{#3}}
+\theoremstyle{customdef}
+\newtheorem{definition}{Definition}
+
+
+\makeglossaries
+\include{glossary}
+
+\author{Quentin Delhaye}
+% \date{October 25th, 2015}&
+\title{Automated System Partitioning for Efficient 3D Circuit Integration \\ \vspace{.5em} \hrule \vspace{.5em} \large Reaserch Progress Report}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\citet{Ihler1993}
+
+\section{Motivation: Why do we want to go 3D?}
+\subsection{Why is 2D not enough anymore?}
+\begin{itemize}
+	\item MONEY
+	\item gate capacitance increasing
+\end{itemize}
+
+
+\section{State of the Art: How do we go 3D?}
+\subsection{Hypergraph partitioning}
+\subsubsection{Multilevel paradigm}
+\subsubsection{Clustering}
+\subsubsection{Implementations}
+\begin{itemize}
+	\item PaToH
+	\item hMetis
+	\item Scotch
+	\item MLPart
+	\item Parkway
+	\item Zoltan
+	\item Chaco
+	\item Jostle
+	\item Party
+	\item KaFFPa
+\end{itemize}
+\subsubsection{Why hypergraphs?}
+\subsection{Monolithic vs stacked}
+\subsection{Memory-on-logic vs logic-on-logic}
+
+
+\section{Challenges: Why is it not done yet?}
+\subsection{Heat Dissipation}
+\subsection{Manufacturing}
+\subsection{Optimal Partitioning}
+
+
+\section{Work: Where are we now?}
+\subsection{Graph Extraction}
+\subsection{Naïve Clustering}
+\subsection{Stats extraction}
+\subsection{Interface with DEF--PaToH/hMetis--Cadence}
+
+
+\section{Results: What can we say?}
+\subsection{WL}
+\subsection{Asymetric partitions}
+\subsection{Power aware}
+
+\section{Future}
+\subsection{Verilog partitioning}
+\subsection{Accessibility/UI}
+\subsection{Clustering}
+\subsection{New metrics}
+\subsection{Multi-die partitioning}
+
+\todo[inline]{I do not intend to develop a new partitioning method: the aim is not to develop yet another derivation of an existing algo.
+I want to focus on a usable worklow interfacable with production tools.}
+\clearpage
+
+\glsaddall
+\printglossaries
+
+\newpage
+\bibliographystyle{abbrvnat}
+% \bibliographystyle{acm}
+\bibliography{../thesis/bibliography.bib}
+
+\end{document}
