@@ -17,8 +17,8 @@
 
 \usepackage{todonotes}
 
-\usepackage[]{natbib}
-% \usepackage[numbers]{natbib}
+% \usepackage[]{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{amsthm}%theorems
 \newtheoremstyle{customdef}%
 	{\topsep}% above the theorem
@@ -49,7 +49,7 @@
 \subsection{Why is 2D not enough anymore?}
 \begin{itemize}
 	\item MONEY
-	\item gate capacitance increasing
+	\item Gate capacitance increasing
 \end{itemize}
 
 
@@ -58,19 +58,41 @@
 \subsubsection{Multilevel paradigm}
 \subsubsection{Clustering}
 \subsubsection{Implementations}
+Numerous software libraries implement some flavor of (hyper)graph partitioning.
 \begin{itemize}
-	\item PaToH
-	\item hMetis
-	\item Scotch
-	\item MLPart
-	\item Parkway
-	\item Zoltan
-	\item Chaco
-	\item Jostle
-	\item Party
-	\item KaFFPa
+	\item PaToH (\citet{Aykanat2011})
+	\item hMetis (\citet{Karypis1999})
+	\item Scotch (\citet{Aykanat2011})
+	\item MLPart (\citet{Caldwell2000})
+	\item Parkway (\citet{Trifunovic2008})
+	\item Zoltan (\citet{Devine2006})
+	\item Chaco (\citet{Lotfifar2015})
+	\item Jostle (\citet{Walshaw1998})
+	\item Party (\citet{Preis97party})
+	\item KaFFPa (\citet{Holtgrewe2010})
 \end{itemize}
 \subsubsection{Why hypergraphs?}
+All hypergraphs can be represented as regular graphs, and lots of tools already exists to handle graphs.
+When we want to express the wire length between two nodes, although it can easily be done using graph's edge weights, it is not expressable as a hypergraph's hyperedge weight, the hyperedge linking several nodes all connected with different wire lengths.
+
+However, when tackling the partitioning problem, working with hypergraphs gives the vertices belonging to the same hyperedge a coherence.
+In the context of 3D ICs, we work with buses connecting blocks of gates, and we want them to be handled as such.
+
+Moreover, \citet{Ihler1993} demonstrated that the mincut partition obtained for a circuit is not as accurate as would be a hypergraph's.
+More precisely, they define a \textit{cut-model} in definitions~\ref{def:cut-model} and \ref{def:cut-model-formal}, and show that there is no such thing in general.
+
+\begin{definition}[Cut-model]\label{def:cut-model}
+An edge-weighted graph $(V,E)$ is a cut-model for an edge-weighted hypergraph $(V,H)$ if the weight of the edges cut by any bipartition of $V$ in the graph is the same as the weight of the hyperedges cut by the same bipartition in the hypergraph.
+\end{definition}
+
+A more formal way to define the principle is as follows~:
+\begin{definition}[Cut-model and mincut-model]\label{def:cut-model-formal}
+A graph $(V, E)$ on $k$ vertices is a cut-model (for a unit weight hyperedge on $k$ vertices) if the weight of any cut induced by a non-empty proper subset $W$ of $V$ is equal to one.
+
+A graph $(V \cup D,E)$ on $k+d$ vertices is called a min-cut-model (for a unit weight hyperedge on $k$ vertices) if for every non-empty subset $W$ of $V$ we have that the weight of any cut with minimum weight (mincut) under those separating $W$ from $V \setminus W$ is equal to one.
+It must be zero fo $W=\emptyset$.%Note: other symbol for empty set: \varnothing
+\end{definition}
+
 \subsection{Monolithic vs stacked}
 \subsection{Memory-on-logic vs logic-on-logic}
 

@@ -336,7 +336,7 @@ title = {{PaToH (Partitioning Tool for Hypergraphs)}},
 url = {http://link.springer.com/content/pdf/10.1007/978-0-387-09766-4{\_}93.pdf},
 year = {2011}
 }
-@article{Caldwell2000,
+@article{Caldwell1999a,
 abstract = {We discuss the implementation and evaluation of move-based hypergraph partitioning heuristics in the context of VLSI design applications. Our first contribution is a detailed software architecture, consisting of seven reusable components, that allows flexible, efficient and accurate assessment of the practical implications of new move-based algorithms and partitioning formulations. Our second contribution is an assessment of the modern context for hypergraph partitioning research for VLSI design applications. In particular, we discuss the current level of sophistication in implementation know-how and experimental evaluation, and we note how requirements for real-world partitioners {\&}mdash; if used as motivation for research {\&}mdash; should affect the evaluation of prospective contributions. We then use two {\&}ldquo;implicit decisions{\&}rdquo; in the implementation of the Fiduccia-Mattheyses [20] heuristic to illustrate the difficulty of achieving meaningful experimental evaluation of new algorithmic ideas. {\&}copy; Springer-Verlag Berlin Heidelberg 1999.},
 annote = {MLPart},
 author = {Caldwell, Andrew E and Kahng, Andrew B and Markov, Igor L},
@@ -929,7 +929,7 @@ pages = {1--22},
 title = {{CAD Algorithms}},
 year = {2008}
 }
-@inproceedings{Caldwell1999,
+@inproceedings{Caldwell1999b,
 abstract = {We illustrate how technical contributions in the VLSI CAD parti- tioning literature can fail to provide one or more of: (i) reproducible results and descriptions, (ii) an enabling account of the key under- standing or insight behind a given contribution, and (iii) experimen- tal evidence that is not only contrasted with the state-of-the-art, but also meaningful in light of the driving application. Such failings can lead to reporting of spurious and misguided conclusions. For example, new ideas may appear promising in the context of a weak experimental testbed, but in reality do not advance the state of the art. The resulting inefficiencies can be detrimental to the entire re- search community. We draw on several models (chiefly from the metaheuristics community) [5] for experimental research and re- porting in the area of heuristics for hard problems, and suggest that such practices can be adopted within the VLSI CAD community. Our focus is on hypergraph partitioning.},
 address = {New Orleans, Louisiana, USA},
 author = {Caldwell, Andrew E. and Kahng, Andrew B. and Kennings, Andrew A. and Markov, Igor L.},
@@ -1139,4 +1139,74 @@ mendeley-tags = {Combinatorial problems,VLSI layout,algorithm design},
 pages = {171----175},
 title = {{Modeling Hypergraphs by Graphs with the same Mincut Properties}},
 volume = {45},
+year = {1993},
+}
+
+@article{Walshaw1998,
+abstract = {Multilevel algorithms are a successful class of optimization techniques which addresses the mesh partitioning problem. They usually combine a graph contraction algorithm together with a local optimization method which refines the partition at each graph level. In this paper we present an enhancement of the technique which uses imbalance to achieve higher quality partitions. We also present a formulation of the Kernighan--Lin partition optimization algorithm which incorporates load-balancing. The resulting algorithm is tested against a different but related state-of-the-art partitioner and shown to provide improved results.},
+author = {Walshaw, C and Cross, M},
+doi = {10.1137/S1064827598337373},
+file = {:home/para/Documents/ULB/graph{\_}partitioning/Walshaw{\_}-{\_}mesh partitioning a multi level balancing and refinement algorithm.pdf:pdf},
+issn = {1064-8275},
+journal = {SIAM J. Sci. Comput.},
+keywords = {graph-partitioning,load-balancing,mesh partitioning,multilevel algorithms},
+number = {1},
+pages = {63--80},
+title = {{Mesh Partitioning : a Multilevel Balancing and Refinement Algorithm}},
+volume = {22},
+year = {1998}
+}
+
+@INPROCEEDINGS{Preis97party,
+    author = {Robert Preis and Ralf Diekmann},
+    title = {PARTY - A Software Library for Graph Partitioning},
+    booktitle = {Advances in Computational Mechanics with Parallel and Distributed Processing},
+    year = {1997},
+    pages = {63--71},
+    publisher = {Civil-Comp Press}
+}
+
+
+@article{Monien2000,
+abstract = {Multilevel strategies have proven to be very powerful approaches in order to partition graphs efficiently. Their efficiency is dominated by two parts; the coarsening and the local improvement strategies. Several methods have been developed to solve these problems, but their efficiency has only been proven on an experimental basis. In this paper, we present new and efficient methods for both problems, while satisfying certain quality measurements. For the coarsening part we develop a new approximation algorithm for maximum weighted matching in general edge-weighted graphs. It calculates a matching with an edge weight of at least 12 of the edge weight of a maximum weighted matching. Its time complexity is O(|E|), with |E| being the number of edges in the graph. Furthermore, we use the Helpful-Set strategy for the local improvement of partitions. For partitioning graphs with a regular degree of 2k into two parts, it guarantees an upper bound of ((k−1)/2)|V|+1 on the cut size of the partition, with |V| being the number of vertices. These quality methods used for the two parts of the multilevel approach lead to an efficient graph-partitioning concept.},
+author = {Monien, Burkhard and Preis, Robert and Diekmann, Ralf},
+file = {:home/para/Documents/ULB/graph{\_}partitioning/Monien{\_}-{\_}Quality matching and local improvement for multilevel graph-partitioning.pdf:pdf},
+issn = {01678191},
+journal = {Parallel Computing},
+keywords = {bisection-width,graph-partitioning,local improvement,matching,multilevel},
+number = {12},
+pages = {1609--1634},
+title = {{Quality Matching And Local Improvement For Multilevel Graph-partitioning}},
+volume = {26},
+year = {2000}
+}
+
+
+@article{Holtgrewe2010,
+abstract = {We describe an approach to parallel graph partitioning that scales to hundreds of processors and produces a high solution quality. For example, for many instances from Walshaw's benchmark collection we improve the best known partitioning. We use the well known framework of multi-level graph partitioning. All components are implemented by scalable parallel algorithms. Quality improvements compared to previous systems are due to better prioritization of edges to be contracted, better approximation algorithms for identifying matchings, better local search heuristics, and perhaps most notably, a parallelization of the FM local search algorithm that works more locally than previous approaches.},
+archivePrefix = {arXiv},
+arxivId = {0910.2004},
+author = {Holtgrewe, Manuel and Sanders, Peter and Schulz, Christian},
+doi = {10.1109/IPDPS.2010.5470485},
+eprint = {0910.2004},
+file = {:home/para/Documents/ULB/graph{\_}partitioning/Holtgrewe{\_}-{\_}Engineering a Scalable High Quality Graph Partitioner.pdf:pdf},
+isbn = {9781424464432},
+issn = {1530-2075},
+journal = {Proceedings of the 2010 IEEE International Symposium on Parallel and Distributed Processing, IPDPS 2010},
+title = {{Engineering a scalable high quality graph partitioner}},
+url = {http://arxiv.org/abs/0910.2004},
+year = {2010}
+}
+@article{Osipov2012,
+abstract = {We present a multi-level graph partitioning algorithm using novel lo-cal improvement algorithms and global search strategies transferred from multi-grid linear solvers. Local improvement algorithms are based on max-flow min-cut computations and more localized FM searches. By combining these techniques, we obtain an algorithm that is fast on the one hand and on the other hand is able to improve the best known partitioning results for many inputs. For example, in Walshaw's well known benchmark tables we achieve 317 improvements for the tables at 1{\%}, 3{\%} and 5{\%} imbalance. Moreover, in 118 out of the 295 remaining cases we have been able to reproduce the best cut in this benchmark.},
+author = {Osipov, Vitaly and Sanders, Peter and Schulz, Christian},
+doi = {10.1007/978-3-642-30850-5_3},
+file = {:home/para/Documents/ULB/graph{\_}partitioning/Sanders{\_}-{\_}engineering multilevel graph partitioning algorithms.pdf:pdf},
+isbn = {9783642308499},
+issn = {03029743},
+journal = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+pages = {18--26},
+title = {{Engineering graph partitioning algorithms}},
+volume = {7276 LNCS},
+year = {2012}
 }
