@@ -17,6 +17,10 @@
 
 \usepackage{todonotes}
 
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\itshape} 	% https://tex.stackexchange.com/questions/235852/how-to-make-all-quotes-italicised
+										% 
+
 % \usepackage[]{natbib}
 \usepackage[numbers]{natbib}
 \usepackage{amsthm}%theorems
@@ -43,7 +47,15 @@
 \begin{document}
 \maketitle
 \tableofcontents
-\citet{Ihler1993}
+
+\clearpage
+
+\begin{quote}
+Imagine you are an antic civil contractor asked to handle high density parking for horse drawn caravans.
+You have a fixed area terrain on which you can fit so much cars.
+Along the years, they become smaller and less bulkier, but that scaling tend to slow down and you still need to fit more and more of them on your parking.
+You now have to make a choice: Do you spend time and money to engineer expensive cars using new materials, or do you finally add a second floor to your parking?
+\end{quote}
 
 \section{Motivation: Why do we want to go 3D?}
 \subsection{Why is 2D not enough anymore?}
@@ -65,8 +77,8 @@ Numerous software libraries implement some flavor of (hyper)graph partitioning.
 	\item Scotch (\citet{Aykanat2011})
 	\item MLPart (\citet{Caldwell2000})
 	\item Parkway (\citet{Trifunovic2008})
-	\item Zoltan (\citet{Devine2006})
-	\item Chaco (\citet{Lotfifar2015})
+	\item Zoltan (\citet{Devine2006}
+)	\item Chaco (\citet{Lotfifar2015})
 	\item Jostle (\citet{Walshaw1998})
 	\item Party (\citet{Preis97party})
 	\item KaFFPa (\citet{Holtgrewe2010})
