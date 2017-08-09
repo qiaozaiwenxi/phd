@@ -131,6 +131,10 @@ It must be zero fo $W=\emptyset$.%Note: other symbol for empty set: \varnothing
 \subsection{Verilog partitioning}
 \subsection{Accessibility/UI}
 \subsection{Clustering}
+What you need to keep in mind, it's that the multilevel paradigm already clusterizes the vertices of the graph during the coarsening phase.
+The purpose of the naïve clustering we are applying on the design, is (1) to reduce the order of the graph before feeding it to the partitioner, and (2) maintain the integrity of logical blocks, hence easing the subsequent \gls{pr} of the partitioned dies.
+At the moment, we do not yet need a very efficient clustering for the current purpose.
+A future improvement could be to develop a more sophisticated algorithm that could replace the coarsening and uncoarsening of the multilevel paradigm, allowing us to fall back on a raw graph partitioning algorithm.
 \subsection{New metrics}
 \subsection{Multi-die partitioning}
 
