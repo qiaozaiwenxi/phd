@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
@@ -9,7 +9,7 @@
 \usepackage[breaklinks=true,hidelinks]{hyperref}
 % \usepackage[breaklinks=true]{hyperref}
 % \usepackage[xindy, toc, nonumberlist]{glossaries}
-\usepackage[toc, nonumberlist]{glossaries}
+\usepackage[toc, acronym, nonumberlist]{glossaries}
 % \gls{label} to invoke the entry.
 % \glsreset{label} to reset the first occurence of the entry.
 % \acrlong{label} to print the long version of the acronym.
@@ -20,6 +20,12 @@
 \usepackage{etoolbox}
 \AtBeginEnvironment{quote}{\itshape} 	% https://tex.stackexchange.com/questions/235852/how-to-make-all-quotes-italicised
 										% 
+
+\usepackage{fullpage}
+% \usepackage{palatino}
+\usepackage{tgtermes}
+% \renewcommand{\familydefault}{\sfdefault}
+
 
 % \usepackage[]{natbib}
 \usepackage[numbers]{natbib}
@@ -36,19 +42,60 @@
 \theoremstyle{customdef}
 \newtheorem{definition}{Definition}
 
+%https://tex.stackexchange.com/questions/84478/how-to-format-title-and-abstract
+\renewenvironment{abstract}{%
+\begin{center}\begin{minipage}{0.85\textwidth}
+\rule{\textwidth}{1pt}}
+{\par\noindent\rule{\textwidth}{1pt}\end{minipage}\end{center}}
+
 
 \makeglossaries
 \include{glossary}
 
 \author{Quentin Delhaye}
-% \date{October 25th, 2015}&
+\date{September 11th, 2017}
 \title{Automated System Partitioning for Efficient 3D Circuit Integration \\ \vspace{.5em} \hrule \vspace{.5em} \large Reaserch Progress Report}
 
 \begin{document}
+
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
+
 \maketitle
+
+\vspace{5cm}
+
+\begin{abstract}
+Who does not want a more powerful and compact chip to process their kinky videos?
+The industry has been fulfilling this wish for decades, but struggles to keep it financialy viable.
+It is becoming obvious that the classic 2D architectures are being limited by their own technology.
+As a famous space ranger once said: “To infinity... and beyond 2D!”
+We need to go beyond the 2D paradigms and explore the third dimension.
+Numerous research groups are working on different aspects of this vast and problem-prone subject.
+
+We are currently working on automatizing the paritioning of 2D architectures that are still mostly done by hand.
+To do so, we are developping a solution interfacing with popular production sofwtares and standards that will process the placed and routed 2D design, extract the underlying hypergraph and statistics, clusterize it, partition it and re-generate netlists for each die.
+
+As of now, we have a hypergraph and statistics extractor as well as a naïve clustering solution for bipartitioning any architecture.
+Although existing partitioning libraries were used, new weights metrics have been studied.
+The impact of clustering granularity on inter- and intra-cluster connecticity has also been under our scope.
+
+In the near future, the generation of partitioned netlists and multiple dies partitioning will be addressed.
+\end{abstract}
+
+\clearpage
+
 \tableofcontents
 
 \clearpage
+
+\pagenumbering{Roman}
+
+% \glsaddall
+\printglossaries
+
+\clearpage
+
+\pagenumbering{arabic}% Arabic page numbers (and reset to 1)
 
 \begin{quote}
 Imagine you are an antic civil contractor asked to handle high density parking for horse drawn caravans.
@@ -57,28 +104,89 @@ Along the years, they become smaller and less bulkier, but that scaling tend to 
 You now have to make a choice: Do you spend time and money to engineer expensive cars using new materials, or do you finally add a second floor to your parking?
 \end{quote}
 
+
+
+
+% ########   ##      ##  ##########  ########     #####    
+%    ##      ###     ##      ##      ##     ##  ##     ##  
+%    ##      ## ##   ##      ##      ##     ##  ##     ##  
+%    ##      ##  ##  ##      ##      ########   ##     ##  
+%    ##      ##   ## ##      ##      ##   ##    ##     ##  
+%    ##      ##     ###      ##      ##    ##   ##     ##  
+% ########   ##      ##      ##      ##     ##    #####    
+
 \section{Motivation: Why do we want to go 3D?}
+
+Stability, security, performance, we always want more.
+The same goes for \glspl{ic}.
+
+
 \subsection{Why is 2D not enough anymore?}
 \begin{itemize}
 	\item MONEY
 	\item Gate capacitance increasing
+	\item Manufacturing. 
 \end{itemize}
 
 
+
+
+
+
+%  #######     #####       ###     
+% ##     ##  ##     ##    ## ##    
+% ##         ##     ##   ##   ##   
+%  #######   ##     ##  ##     ##  
+%        ##  ##     ##  #########  
+% ##     ##  ##     ##  ##     ##  
+%  #######     #####    ##     ## 
+
 \section{State of the Art: How do we go 3D?}
 \subsection{Hypergraph partitioning}
+\todo[inline]{Define hypergraph here.}
+
+\subsection{The Usual Suspects}
+A lot of solutions have been developped along the years to solve various partitioning-related problems.
+\todo[inline]{Cite some articles like “billion node thing”}
+However, most of them are derivations of a few “founders” algorithms.
+
+\subsubsection{Kernighan-Lin Algorithm~\citep*{Kernighan1970}}
+\todo[inline]{Describe the mathematical principles of the method.}
+
+\subsubsection{Fiduccia-Mattheyses Algorithm~\citep*{Fiduccia1982}}
+\todo[inline]{Describe the mathematical principles of the method.}
+
+\subsubsection{EIG Algorithm~\citep*{Hagen1992}}
+\citet{Hagen1992} showed that the second smallest eigenvalue of the connectivity matrix of the graph is a tight lower bound on the ratio cut metric.
+That metric is defined as $\frac{c(X,Y)}{|X||Y|}$ with $c(X, Y)$ the cutsize between the two partitions.
+
+Based on this result, they built an algorithm to make bipartition of graphs with minimal ratio cut.
+
+The idea is first to approximate the hypergraph with an undirected graph using a $k$-clique model.
+This model states that a clique with k nodes forms a $k$-clique, hence a hyperedge forms one as well.
+From this graph, we derive the degree matrix $D$ where  $d_{ii}$ is the sum of all the weights of the incident edges on node $i$.
+Similarly, we build the adjacent matrix $A$ where $a_{ij}$ gives the weight of the edge $(i, j)$.
+The Laplacian matrix $Q$ is then $Q = D - A$, from which we extract the eigenvector and its second smallest value.
+Using the ordered eigenvector, we then compute $n-1$ partitionings: $(\{v_1\}, \{v_2, ..., v_n\}), (\{v_1, v_2\}, \{v_3, ..., v_n\}), ..., (\{v_1, ..., v_{n-1}\}, \{v_n\})$.
+
+In the end, this method is particularly useful to set a lower bound on the ratio cut.
+
+
 \subsubsection{Multilevel paradigm}
+\todo[inline]{What are the fundamental articles for this paradigm?}
+\todo[inline]{Karypis has some nice figures.}
 \subsubsection{Clustering}
 \subsubsection{Implementations}
 Numerous software libraries implement some flavor of (hyper)graph partitioning.
+\todo[inline]{For each of them, find what sets them appart. Try to group them into categories.}
 \begin{itemize}
 	\item PaToH (\citet{Aykanat2011})
 	\item hMetis (\citet{Karypis1999})
 	\item Scotch (\citet{Aykanat2011})
 	\item MLPart (\citet{Caldwell2000})
 	\item Parkway (\citet{Trifunovic2008})
-	\item Zoltan (\citet{Devine2006}
-)	\item Chaco (\citet{Lotfifar2015})
+	\item Zoltan (\citet{Devine2006})
+	\item Chaco (\citet{Lotfifar2015})
 	\item Jostle (\citet{Walshaw1998})
 	\item Party (\citet{Preis97party})
 	\item KaFFPa (\citet{Holtgrewe2010})
@@ -109,23 +217,80 @@ It must be zero fo $W=\emptyset$.%Note: other symbol for empty set: \varnothing
 \subsection{Memory-on-logic vs logic-on-logic}
 
 
+
+
+%  #######   ##     ##     ###     ##         ##         #########  ##      ##   #######   #########   #######   
+% ##     ##  ##     ##    ## ##    ##         ##         ##         ###     ##  ##         ##         ##     ##  
+% ##         ##     ##   ##   ##   ##         ##         ##         ## ##   ##  ##         ##         ##         
+% ##         #########  ##     ##  ##         ##         ######     ##  ##  ##  ##   ####  ######      #######   
+% ##         ##     ##  #########  ##         ##         ##         ##   ## ##  ##     ##  ##                ##  
+% ##     ##  ##     ##  ##     ##  ##         ##         ##         ##     ###  ##     ##  ##         ##     ##  
+%  #######   ##     ##  ##     ##  #########  #########  #########  ##      ##  ########   #########   #######  
+
 \section{Challenges: Why is it not done yet?}
 \subsection{Heat Dissipation}
 \subsection{Manufacturing}
+\todo[inline]{Yield for 3D ICs}
+
 \subsection{Optimal Partitioning}
 
+\subsection{Find appropriate metrics}
+
+
+
+
+% ##           ##    #####    ########   ##   ##    
+% ##           ##  ##     ##  ##     ##  ##  ##     
+% ##           ##  ##     ##  ##     ##  ## ##      
+% ##           ##  ##     ##  ########   ####       
+%  ##   ###   ##   ##     ##  ##   ##    ##  ##     
+%   ## ## ## ##    ##     ##  ##    ##   ##   ##    
+%    ###   ###       #####    ##     ##  ##    ##  
 
 \section{Work: Where are we now?}
+\todo[inline]{Remind them of the aim: the complete and interfaceable workflow.}
+
 \subsection{Graph Extraction}
+\todo[inline]{Explain from what format we can extract a graph.}
+We use the outputs from Cadence(?) P\&R to extract the vertices and hyperedges, as well as the weights of the graph.
+
 \subsection{Naïve Clustering}
+Our clustering is used to reduce the order of the graph for the partitioner to have an easier job.
+The way it is implemented is simplistic and naïve: we slice the die into a grid with each cell being a cluster.
+We consider that the \gls{pr} has placed closed to each other standard cells that participate to the same logical function, hence making them a sound logical block that can be used as a cluster.
+\todo[inline]{Play on the granularity of the clustering and see the impact on inter-cluster wire length.}
+
 \subsection{Stats extraction}
+
 \subsection{Interface with DEF--PaToH/hMetis--Cadence}
 
+
+
+
+% ########   #########   #######   ##     ##  ##         ##########   #######   
+% ##     ##  ##         ##     ##  ##     ##  ##             ##      ##     ##  
+% ##     ##  ##         ##         ##     ##  ##             ##      ##         
+% ########   ######      #######   ##     ##  ##             ##       #######   
+% ##   ##    ##                ##  ##     ##  ##             ##             ##  
+% ##    ##   ##         ##     ##  ##     ##  ##             ##      ##     ##  
+% ##     ##  #########   #######    #######   #########      ##       #######  
 
 \section{Results: What can we say?}
 \subsection{WL}
 \subsection{Asymetric partitions}
 \subsection{Power aware}
+
+
+
+
+
+% #########  ##     ##  ##########  ##     ##  ########   #########  
+% ##         ##     ##      ##      ##     ##  ##     ##  ##         
+% ##         ##     ##      ##      ##     ##  ##     ##  ##         
+% ######     ##     ##      ##      ##     ##  ########   ######     
+% ##         ##     ##      ##      ##     ##  ##   ##    ##         
+% ##         ##     ##      ##      ##     ##  ##    ##   ##         
+% ##          #######       ##       #######   ##     ##  #########  
 
 \section{Future}
 \subsection{Verilog partitioning}
@@ -141,9 +306,6 @@ A future improvement could be to develop a more sophisticated algorithm that cou
 \todo[inline]{I do not intend to develop a new partitioning method: the aim is not to develop yet another derivation of an existing algo.
 I want to focus on a usable worklow interfacable with production tools.}
 \clearpage
-
-\glsaddall
-\printglossaries
 
 \newpage
 \bibliographystyle{abbrvnat}
