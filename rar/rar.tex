@@ -144,6 +144,44 @@ The same goes for \glspl{ic}.
 \section{State of the Art: How do we go 3D?}
 \subsection{Hypergraph partitioning}
 \todo[inline]{Define hypergraph here.}
+\begin{definition}[Balanced bipartitioning]\label{def:bal-bipart}
+
+\end{definition}
+
+\begin{definition}[Cutsize]\label{def:cutsize}
+\end{definition}
+
+\subsubsection{Complexity}
+
+\begin{definition}[Non-deterministic Turing Machine]\label{def:nd-tm}
+In this kind of Turing machines, the transition \emph{rule} becomes a transition \emph{function}.
+It means that at a given state, with a given symbol, it has many possible execution instead of just the one with a deterministic Turing machine.
+We can see that as the machine always taking the best possible guess, leading to a finishing state in the end, or the machine is branching into all the possible states from the point of decision.
+\end{definition}
+
+\begin{definition}[NP]\label{def:np}
+Acronym for ``non-deterministic polynomial-time".
+A ``yes"-instance can be found in polynomial-time by a non-deterministic Turing machine, and this solution can be verified in polynomial-time by a deterministic Turing machine.
+\end{definition}
+
+\begin{definition}[NP-hard]\label{def:np-hard}
+Acronym for ``non-deterministic polynomial-time hard".
+~\newline{}\noindent Note: it has never been proven that there is no polynomial-time algorithm to solve those problems.
+Informally, it means that those problems are at least as hard as the hardest problems in NP.
+\end{definition}
+
+\begin{definition}[NP Complete]\label{def:np-comp}
+A problem is NP complete when it is both NP and NP hard at the same time.
+Although the solution can be verified in polynomial time, there is no known algorithm to find this solution quickly.
+The problem to know if such algorithm exist is the ``P $=$ NP" problem.
+
+An NP-complete problem differs from a regular NP problem in the sense that a problem is NP-complete if every other problem in NP can be reduced to it.ea
+\end{definition}
+
+\begin{definition}[P=NP]\label{def:p-np}
+Problem asking if there exist polynomial time algorithm solving NP-complete problems (an by corollary all NP problems).
+\end{definition}
+
 
 \subsection{The Usual Suspects}
 A lot of solutions have been developped along the years to solve various partitioning-related problems.
