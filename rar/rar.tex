@@ -7,8 +7,8 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 % \usepackage{subcaption}%subfigures, not compatible with the 'caption' package
-% \usepackage[breaklinks=true,hidelinks]{hyperref}
-\usepackage[breaklinks=true]{hyperref}
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+% \usepackage[breaklinks=true]{hyperref}
 % \usepackage[xindy, toc, nonumberlist]{glossaries}
 \usepackage[toc, acronym, nonumberlist]{glossaries}
 % \gls{label} to invoke the entry.
@@ -151,7 +151,7 @@
 \end{center}
 ~\vspace{5cm}
 \begin{center}
- {\LARGE Automated System Partitioning for Efficient 3D Circuit Integration \\ \vspace{.5em} \hrule \vspace{.5em} \Large Reaserch Progress Report\\}
+ {\LARGE Automated System Partitioning for Efficient 3D Circuit Integration \\ \vspace{.5em} \hrule \vspace{.5em} \Large Research Progress Report\\}
  % ----------------------------------------------------------------
  \vspace{1.5cm}
  {\large Quentin \textsc{Delhaye} -- September 2017}\\[5pt]
@@ -167,7 +167,7 @@ Numerous research groups are working on different aspects of this vast and probl
 We are currently working on automating the partitioning of 2D architectures that is still mostly done by hand.
 To do so, we are developing a solution interfacing with popular production sofwtares and standards that will process the placed and routed 2D design, extract the underlying hypergraph and statistics, cluster it, partition it and re-generate netlists for each die.
 
-As of now, we have a hypergraph and statistics extractor as well as a naïve clustering solution for bipartitioning any architecture.
+As of now, we have a hypergraph and statistics extractor as well as a naive clustering solution for bipartitioning any architecture.
 Although existing partitioning libraries were used, new weights metrics have been studied.
 The impact of clustering granularity on inter- and intra-cluster connectivity has also been under our scope.
 
@@ -181,9 +181,9 @@ Some intermediate results showed a gain of up to 77\% in total wire length on so
 % Numerous research groups are working on different aspects of this vast and problem-prone subject.
 
 % We are currently working on automatizing the paritioning of 2D architectures that are still mostly done by hand.
-% To do so, we are developing a solution interfacing with popular production sofwtares and standards that will process the placed and routed 2D design, extract the underlying hypergraph and statistics, cluster it, partition it and re-generate netlists for each die.
+% To do so, we are developing a solution interfacing with popular production sofwtare and standards that will process the placed and routed 2D design, extract the underlying hypergraph and statistics, cluster it, partition it and re-generate netlists for each die.
 
-% As of now, we have a hypergraph and statistics extractor as well as a naïve clustering solution for bipartitioning any architecture.
+% As of now, we have a hypergraph and statistics extractor as well as a naive clustering solution for bipartitioning any architecture.
 % Although existing partitioning libraries were used, new weights metrics have been studied.
 % The impact of clustering granularity on inter- and intra-cluster connecticity has also been under our scope.
 
@@ -215,7 +215,7 @@ Some intermediate results showed a gain of up to 77\% in total wire length on so
 \pagestyle{fancy}
 \fancyhf{}
 \chead{Automated System Partitioning for Efficient 3D Circuit Integration}
-\cfoot{\thepage}
+\cfoot{\thepage~\\ \hspace{\paperwidth}b}
 
 \thispagestyle{empty}
 
@@ -273,7 +273,7 @@ They are everywhere: in your dishwasher, your phone, your car, your heating syst
 Take the figure~\ref{fig:trans}.
 This little piece of technology is making the world go round.
 But the world is greedy, it always wants more.
-For a very long time, more meant smaller transistors, but in the recent years, this scalling faced ever complex challenges.
+For a very long time, more meant smaller transistors, but in the recent years, this scaling faced ever complex challenges.
 
 \begin{figure}[!h]
 \centering
@@ -327,9 +327,9 @@ The aim of system partitioning is to shorten the longest nets and preserve the s
 
 However, 3D is not around the corner just yet.
 Amongst other challenges, the industry still lacks proven toolchains capable of designing those 3D ICs.
-This is were we intervene: by intending to develop a complete toolchain automating the design and partitioning of 3D ICs.\\
+This is where we intervene: by intending to develop a complete toolchain automating the design and partitioning of 3D ICs.\\
 
-In this report, we will see what is the scope of this subject (chapter~\ref{chap:soa}), present some of the challenges 3D ICs face (chapter~\ref{chap:challenges}), explain what we developped to contribute to the research effort (chapter~\ref{chap:work}), discuss some preliminary results (chapter~\ref{chap:results}) and take a peek behind the door of the future of this project (chapter~\ref{chap:future}).
+In this report, we will see what is the scope of this subject (chapter~\ref{chap:soa}), present some of the challenges 3D ICs face (chapter~\ref{chap:challenges}), explain what we developed to contribute to the research effort (chapter~\ref{chap:work}), discuss some preliminary results (chapter~\ref{chap:results}) and take a peek behind the door of the future of this project (chapter~\ref{chap:future}).
 
 
 % \section{Why is 2D not enough anymore?}
@@ -378,7 +378,7 @@ In this report, we will see what is the scope of this subject (chapter~\ref{chap
 
 In this chapter, we will first define the basic terms (section~\ref{sec:def}) needed to discuss partitioning (section~\ref{sec:part-algo}).
 Said discussion will focus on some of the most popular partitioning algorithms, their implementation and why hypergraphs are used.
-In chapter~\ref{chap:work}, we will prensent \texttt{PHONEY}, our software implementing those methods.
+In chapter~\ref{chap:work}, we will present \texttt{PHONEY}, our software implementing those methods.
 
 Next, we will present some physical integration techniques (section~\ref{sec:int-flav}) and existing design flows (section~\ref{sec:flows}).
 
@@ -462,11 +462,11 @@ GGiven a hypergraph $G$ and a balancing constraint $[l, u]$, the balanced partit
 
 \section{The Usual Suspects -- Partitioning algorithms}\label{sec:part-algo}
 As the problem of graph partitioning is NP-complete~\citep{Garey1976}, it needs heuristics to be solved.
-% The first solutions developped focused on being efficient even if suboptimal.
+% The first solutions developed focused on being efficient even if suboptimal.
 Typical algorithms include local search based solutions (such as \glsfirst{kl}~\citep{Kernighan1970} and \glsfirst{fm}~\citep{Fiduccia1982}), simulated annealing~\citep{Johnson1989}, %genetic algorithm \citep{Bui1996} \citep{Maini1996} \citep{Kim2011} \citep{Shanavas2014}, 
 tabu search \citep{Pirlot1996}, etc.
-To scale up with the problem size and handle millions of nodes, the multilevel paradgim was developped.
-% A lot of solutions have been developped along the years to solve various partitioning-related problems (\citep{Tsourakakis2014}, \citep{export:183714}).
+To scale up with the problem size and handle millions of nodes, the multilevel paradigm was developed.
+% A lot of solutions have been developed along the years to solve various partitioning-related problems (\citep{Tsourakakis2014}, \citep{export:183714}).
 Nowadays, as we reach graphs with billions of nodes, new methods need to be researched (\citep{Tsourakakis2014, export:183714}).
 
 In this section, we present some of the most popular partitioning methods.
@@ -478,7 +478,7 @@ In this section, we present some of the most popular partitioning methods.
 
 \subsection{Kernighan-Lin Algorithm}
 \gls{kl} is a partitioning method published by \citet{Kernighan1970}, based on gain cell swap.
-The idea is to randomly bipartition an undirected graph and improve its cutsize by swapping pairs of nodes accross the partition.
+The idea is to randomly bipartition an undirected graph and improve its cutsize by swapping pairs of nodes across the partition.
 
 During each pass of the algorithm, we compute the cost of each cell in both partitions $P_p$, with $p \in \{1,2\}$:
 \begin{itemize}
@@ -516,7 +516,7 @@ However, if the nodes are sorted and the comparison cleverly ordered, it can dro
 
 
 \subsection{Fiduccia-Mattheyses Algorithm}
-\gls{fm} is a method to bipartition hypergraphs, developped by~\citet{Fiduccia1982}.
+\gls{fm} is a method to bipartition hypergraphs, developed by~\citet{Fiduccia1982}.
 In contrast with \gls{kl}, \gls{fm} is based on cell moves instead of cell swaps.
 There is then no need to compute lots of gains, but a balance constraint becomes necessary to ensure that a cell move does not disbalance the bipartition.
 
@@ -526,7 +526,7 @@ with $FS(x)$ the number of nets having $x$ as its only cell in $P_1$ and $TE(x)$
 
 At each step of the pass, we (i) choose a free cell with maximum gain which move is allowed by the balance constraint, (ii) move it and lock it, (iii) update the gain of the impacted cells and (iv) record the current cutsize.
 
-When the cutsize is not improved at the end of a pass, we stop. Otherwise we keep the fist $m$ moves that led to the minimum cutsize and begin a new pass.
+When the cutsize is not improved at the end of a pass, we stop. Otherwise, we keep the fist $m$ moves that led to the minimum cutsize and begin a new pass.
 
 
 \paragraph{Application to circuits}
@@ -574,12 +574,12 @@ Although this method is not implemented in traditional libraries, it may be usef
 
 \subsection{Other heuristics}
 In parallel with the aforementioned methods, there exist other heuristics in competition.
-Some are briefely presented here for the sake of completeness, but as they have been supplanted by other paradigms along the years for circuit partitioning, we will not dive too deep into the details.
+Some are briefly presented here for the sake of completeness, but as they have been supplanted by other paradigms along the years for circuit partitioning, we will not dive too deep into the details.
 
 \paragraph{Local Search Strategy}
 A local search will look in the neighborhood of the current solution for a better one.
 If there is nothing better in the direct vicinity of the position, just stop.
-As \citet{Pirlot1996} says, this strategy is also known as “descent” strategy and is basically what was done in \texttt{PHONEY} when we tried to disbalance the energy repartition in the partitions, while keeping the area balanced (see sections~\ref{sec:graph-extr} and \ref{sec:asym-part}).
+As \citet{Pirlot1996} says, this strategy is also known as “descent” strategy and is basically what was done in \texttt{PHONEY} when we tried to disbalance the energy distribution in the partitions, while keeping the area balanced (see sections~\ref{sec:graph-extr} and \ref{sec:asym-part}).
 
 The problem of this strategy is that it will get stuck in local minima.
 Escaping requires a deterioration of the solution, which is done by \gls{sa} and \gls{ts}.
@@ -587,13 +587,13 @@ Escaping requires a deterioration of the solution, which is done by \gls{sa} and
 \paragraph{Simulated Annealing}
 \citet{Pirlot1996} presents this heuristic like the evolution of a local search.
 Instead of looking in the neighborhood of the current solution, we pick one randomly.
-If it is better, keep it, otherwise we have a probabilty $p$ to keep it and $(1-p)$ to discard it.
+If it is better, keep it, otherwise we have a probability $p$ to keep it and $(1-p)$ to discard it.
 $p$ is usually a Boltzmann-like distribution:
 \[p(n) = \exp{\left(-\frac{1}{T(n)} \Delta F_n\right)}\]
 with $n$ the current step, $\Delta F_n = F(x) - F(x_n)$ the distance from the current solution, and $T(n)$ is what we could call the “temperature” by analogy with the annealing of steel.
 Each $L$ steps, the temperature decreases, lowering the probability to accept a worse solution.
 
-The stopping condition can be a number of steps from the beginning or a number a steps without enough improvement of the solution.
+The stopping condition can be a number of steps from the beginning or a number of steps without enough improvement of the solution.
 
 \paragraph{Tabu Search}
 A tabu search, as its name and \citet{Pirlot1996} indicate, is based on a tabu of some sort.
@@ -609,7 +609,7 @@ However, should a potential solution forbidden by the tabu list be so good accor
 \subsection{Multilevel paradigm}\label{sec:mul-para}
 As the number of cells grows, the graphs become more difficult to partition in a practical time.
 In order to use proven algorithms on larger graphs, they need to be scaled down.
-This is what the multilevel framework has been developped for~\citep{Karypis1995b}: (i) coarsen the graph, (ii) partition it using aformentioned algorithms and (iii) uncoarsen the graph while refining the partitioning.
+This is what the multilevel framework has been developed for~\citep{Karypis1995b}: (i) coarsen the graph, (ii) partition it using aforementioned algorithms and (iii) uncoarsen the graph while refining the partitioning.
 
 Compared to a standard partitioning algorithm alone, \citet{Karypis1995a} proved that the multilevel implementation yields a worse cutsize by at most a small factor.
 
@@ -632,7 +632,7 @@ Hereunder we present some of the most popular steps used in the hMetis package~\
 	For each candidate, we compute the weight of the edge connecting $u$ and $v$, that is the sum of all the edge-weights of the hyperedges containing $u$ and $v$.
 	The pair with the maximum weight wins and gets merged.
 
-	This is similar to the scheme that converts the hypergraph into a graph, but this is done implicitely.
+	This is similar to the scheme that converts the hypergraph into a graph, but this is done implicitly.
 	And this is why the coarsening using this technique is quite slow: only pairs of vertices are matched at each pass.
 	% \item \gls{hem}
 	\item \gls{hec}: This time, we contract all the vertices belonging to the same hyperedge together at once.
@@ -649,7 +649,7 @@ Hereunder we present some of the most popular steps used in the hMetis package~\
 	This trick avoid orphan vertices and preserve the shape of the hypergraph.
 \end{itemize}
 
-Many other schemes exist, have been developped and improved upon for the past 20 years \citep{Aykanat2008, Karypis1995b, Lotfifar2015, Monien2000}.
+Many other schemes exist, have been developed and improved upon for the past 20 years \citep{Aykanat2008, Karypis1995b, Lotfifar2015, Monien2000}.
 
 
 \paragraph{Partitioning}
@@ -688,7 +688,7 @@ The reader can refer to~\citep{Trifunovic2006} for a more extensive survey.
 \begin{itemize}
 	\item Chaco\footnote{\url{https://cfwebprod.sandia.gov/cfdocs/CompResearch/templates/insert/softwre.cfm?sw=36}} (\citet{Hendrickson1994}): One of the first package implementing several state-of-the-art algorithms at the time.
 	On top of implementing raw \gls{kl} and its multilevel variant, it also proposes simple, spectral and inertial partitioning algorithms.
-	although it does not work on hypergraphs nor does it fundamentally modify or improve basic algorithms, it has the advantage to offer a stable ground for further development and more sophisticated implementations comparison.
+	Although it does not work on hypergraphs nor does it fundamentally modify or improve basic algorithms, it has the advantage to offer a stable ground for further development and more sophisticated implementations comparison.
 
 	\item hMETIS\footnote{\url{http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview}} (\citet{Karypis1999}): A fork of the METIS package from the same team and uses mainly the techniques presented in section~\ref{sec:mul-para}.
 	Even though the algorithms used are dating and it has not been maintained for 10 years (the last alpha version is from may 2007), it is still used as a reference benchmark.
@@ -710,7 +710,7 @@ The reader can refer to~\citep{Trifunovic2006} for a more extensive survey.
 	Note that METIS also has a parallel variant in ParMETIS, but which only works on graphs.
 	
 	\item Zoltan\footnote{\url{http://www.cs.sandia.gov/zoltan/}} (\citet{Devine2006}): Another parallel implementation of the multilevel scheme.
-	Of its own team acknowledgement, it is in direct competition with Par\textit{k}way.
+	Of its own team acknowledgment, it is in direct competition with Par\textit{k}way.
 	They share the same principles on several points, execpt some details.
 	For example, Zoltan's initial partitioning tasks each processor to compute a random partition and keeps the global best as a start for the uncoarsening.
 	In the end, Zoltan is a more straightforward parallelization than Par\textit{k}way, with less communication between the nodes and less fancy computations.
@@ -720,7 +720,7 @@ The reader can refer to~\citep{Trifunovic2006} for a more extensive survey.
 	% \item KaFFPa (\citet{Holtgrewe2010})
 	\item FEHG (\citet{Lotfifar2015}) : More recent implementation of multilevel scheme (2015), but very similar to PaToH.
 	The only difference is in the coarsening algorithm which relies on rough set clustering.
-	This algorithm allows to highlight patterns in a graph by measuring the similarity of nodes using the \gls{jaccard-index}.
+	This algorithm allows highlighting patterns in a graph by measuring the similarity of nodes using the \gls{jaccard-index}.
 \end{itemize}
 
 hMETIS and PaToH are the cornerstone implementations used in this work, but we want to extend our support to other libraries such as MLPart and Scotch.
@@ -758,12 +758,12 @@ There is not a single integration system dominating the others and attracting al
 Actually, there exist two main ways to assemble multiple layers of transistors: as a monolithic bloc~\citep[chap. 2]{Tan2008} or stacking “standard” layers\citep{Tan2008}.
 
 \paragraph{Monolithic 3D ICs}
-There exist several level of monolithic integration (see fig~\ref{fig:m3d}): transistor- \citep{Lee2013, Samal2014}, gate- \citep{Panth, Panth2014} and block-level \citep{Panth2013}.
+There exist several levels of monolithic integration (see fig~\ref{fig:m3d}): transistor- \citep{Lee2013, Samal2014}, gate- \citep{Panth, Panth2014} and block-level \citep{Panth2013}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=.7\textwidth]{img/M3D-Lim.png}
-	\caption{The three levels of molothic 3D ICs: transistor-, gate- and block-level (\citet{Panth}).}
+	\caption{The three levels of monolithic 3D ICs: transistor-, gate- and block-level (\citet{Panth}).}
 	\label{fig:m3d}
 \end{figure}
 
@@ -773,7 +773,7 @@ However, it would require the redesign of standard cells.
 The next grain level is to work on gates. %But isn't gate-level a scam? Don't they use multi-level schemes that will need to coarsen the graph (group the gates in logic blocks) before partition it? Is the uncoarsening phase really that important? Are the results so different from the block-level partitioning?
 Existing standard cells can be reused, but the partitioning algorithm needs to handle millions of nodes.
 
-Finally, monilithic 3D chips can be designed from functional blocks.
+Finally, monolithic 3D chips can be designed from functional blocks.
 On top of being able to reuse existing standard cells, even IPs could be reused as such.
 Yet, this level of integration does not take full advantage of the fine integration nature of monolithic 3D.
 
@@ -784,7 +784,7 @@ What is worst is that the wire capacitance is even increasing due to the multipl
 
 \paragraph{3D stacking}
 When stacking ICs to make them 3D, each layer is a full fledged IC, with its substrate and metal layers.
-To bond them toghether, two main methods exist:
+To bond them together, two main methods exist:
 \begin{itemize}
 	\item \gls{f2f}, using F2F vias (\citep{Peng2017}). We put the \gls{beol} of each chip in front of each other (see figure~\ref{fig:f2f}).
 	Although this method avoids drilling through the substrate of the dies, it is limited to two layers.
@@ -817,7 +817,7 @@ Furthermore, there are three other methods to bond wafers together:
 
 ~\newline{}
 The research on all families of methods is not restrained to a few research groups.
-Lots of them are heavely tied with the industry and supported by public grants.
+Lots of them are heavily tied with the industry and supported by public grants.
 In Europe only, FP7 and H2020 project frameworks have supported or are still supporting numerous teams.\\
 
 % TODO Remove bold and shit.
@@ -844,7 +844,7 @@ Horizon 2020 projects:
 
 
 \section{3D IC design flow}\label{sec:flows}
-As the research in 3D IC partitioning and manufacturing advanced, it makes sense that comprehensive 3D workflows have been developped to prototype the innovations.
+As the research in 3D IC partitioning and manufacturing advanced, it makes sense that comprehensive 3D workflows have been developed to prototype the innovations.
 Here follows a selected list of some academic integration flows.
 
 \begin{description}
@@ -856,9 +856,9 @@ Here follows a selected list of some academic integration flows.
 	\item[Shrunk2D] Another and slightly older \gls{m3d} toolchain that shrinks the cells to evaluate the wire length and placement in 3D \citep{Panth}.
 	By shrinking the dimensions by a factor $1/\sqrt2$ everything is twice as small.
 	After placing and routing the shrunk cells, they are expanded back to their original size and every overlapping cells are separated on two different dies.
-	This evaluation of course only works when we assume the breadth of the vertical integration to be negligeble, which is a fair assumption for \gls{m3d}.
+	This evaluation of course only works when we assume the breadth of the vertical integration to be negligible, which is a fair assumption for \gls{m3d}.
 
-	\item[Cascade2D] An \gls{m3d} design flow developped by \citet{Chang2016} as an improvement over Shrunk2D.
+	\item[Cascade2D] An \gls{m3d} design flow developed by \citet{Chang2016} as an improvement over Shrunk2D.
 	Some of its enhancements compared to its predecessor includes the addition of a \gls{miv} planning stage between the partitioning and 3D placement, the versatility of compatible partitioning algorithms and the ability to work at block-level.
 
 	As promising as it is, Cascade2D sadly is highly interlaced with Cadence\textsuperscript{\textregistered} Innovus\textsuperscript{\texttrademark}, limiting its reusability without the proper licenses.
@@ -885,7 +885,7 @@ Here follows a selected list of some academic integration flows.
 \chapter{Challenges: Why is it not done yet?}\label{chap:challenges}
 3D is not a novel idea. In 1979, \citet{Geis1979} already demonstrated the concept.
 They were followed on the 80's \citep{Akasaka1986, Colinge1981, Goeloe1981, Kawamura1983, Kunio1989, Nakano1984, Nishimura1987, Sugahara1986, Terui1983} and the 90's \citep{Neudeck1999, Saraswat1999, Strickland1998, Subramanian1998} by a lot of theoretical research on 3D CMOS and early integration.
-But it is only in the 2000's \citep{Souri2000} that full workflows began to be developped and full chips manufacturing began to be considered.
+But it is only in the 2000's \citep{Souri2000} that full workflows began to be developed and full chips manufacturing began to be considered.
 
 The main factor why it has not been more thoroughly investigated earlier is that the cost to scale down the technology was simply lower than developing 3D integration technologies.
 Hence, as attractive a research subject it was, the industry was simply not ready to heavely invest in it.
@@ -899,7 +899,7 @@ Some of those problems are exposed in this section to alert the reader to the co
 
 \section{Manufacturing}
 As we already discussed in section~\ref{sec:int-flav}, there exist multiple ways to manufacture a 3D IC.
-\citet{Xu2012} did a review of yield enhacement for stacked 3D IC and identified two main sources of yield loss when going 3D:
+\citet{Xu2012} did a review of yield enhancement for stacked 3D IC and identified two main sources of yield loss when going 3D:
 \begin{itemize}
 	\item Stack yield loss.
 	When stacking two dies using the \gls{w2w} technique, you may stack a bad die with a good one.
@@ -922,16 +922,16 @@ Whether both factors counterbalance is part of the challenge.
 \section{Thermally-aware Design}
 Manufacturing 3D IC efficiently is one thing, but having them function properly without failing is another entirely.
 As the dies are stacked, the heat generated by the standard cells becomes increasingly difficult to dissipate and the reliability of the chip decreases~\citep{Lin2008}.
-The farther the cells are placed from the heatsink, the more critical they get.
+Farther the cells are placed from the heatsink, the more critical they get.
 
 In the recent years, two research directions have emerged to address this problem:
 \begin{itemize}
-	\item Thermal co-design~\citep{Cong2004, Cong2007, Minz2008, Ryu2011, Zhang2006}: either by cleverly spreading the cells on the dies to limit the hotspots and heat gradiant, or by using thermal \gls{tsv}s whose role is to canalize and improve the heat flow through the layers.
+	\item Thermal co-design~\citep{Cong2004, Cong2007, Minz2008, Ryu2011, Zhang2006}: either by cleverly spreading the cells on the dies to limit the hotspots and heat gradient, or by using thermal \gls{tsv}s whose role is to canalize and improve the heat flow through the layers.
 	For example, by forcing the high-power cells on the layer closer to the heat sink, \citet{Athikulwongse2014} outperforms state-of-the-art temperature aware placers by 10\% and 33\% in terms of maximum temperature and temperature difference.
 	
 	\item Micro-fluidic cooling~\citep{Koo2005, Serafy2013, Serafy2016}: leave space between the layers and use some deionized fluid to evacuate the heat channeled through inter-tiears fins.
-	Advocates of this technique argue that micro-fluidic cooling improves performance and efficiency of a given architecture compared to traditioal air cooling.
-	If it seems promising on paper, it is a complex technology to put into practice, as it further complicates the manufacturing and needs a paradgim shift of chips integration in complete systems.
+	Advocates of this technique argue that micro-fluidic cooling improves performance and efficiency of a given architecture compared to traditional air cooling.
+	If it seems promising on paper, it is a complex technology to put into practice, as it further complicates the manufacturing and needs a paradigm shift of chips integration in complete systems.
 \end{itemize}
 
 
@@ -961,7 +961,7 @@ The imbalance is a challenge \citep{Jain2008}.
 What can be even more of a challenge is when we consider an air-cooled 3D IC.
 The power delivery pins and heatsink are on opposite sides of the chip, but the same type of cells need them the most at the same time.
 The most power consuming cells should be placed close to the power source in order to avoid a complex \gls{pdn}, but at the same time they will dissipate the most heat and should be placed to the heatsink to avoid failures.
-Teams working on the problem are trying to optimize the power demand accross layers, such as \citet{Pantht2015} who developped a \gls{pdn} aware gate-level  partitioner.
+Teams working on the problem are trying to optimize the power demand across layers, such as \citet{Pantht2015} who developed a \gls{pdn} aware gate-level  partitioner.
 
 
 
@@ -981,7 +981,7 @@ Their common divisor is their ties to specific, expensive tools and their lack o
 This is a major drawback we want to alleviate in our work.
 
 The figure~\ref{fig:flow} gives a macroscopic idea of the interface we aim at developing.
-The elements on the left-hand side are existing solution and tools, while the right-hand blocs are currently developped to automate what is currently mainly done by hand.
+The elements on the left-hand side are existing solution and tools, while the right-hand blocs are currently developed to automate what is currently mainly done by hand.
 
 \begin{figure}[!h]
 	\centering
@@ -990,18 +990,18 @@ The elements on the left-hand side are existing solution and tools, while the ri
 	\label{fig:flow}
 \end{figure}
 
-In this section, we will present what has been developped so far and how those components interact with each other.
+In this section, we will present what has been developed so far and how those components interact with each other.
 
 % \todo[inline]{Quelles sont mes contributions ? Je ne peux pas simplement leur dire que j'ai développé deux scripts qui utilisent le travail d'autres personnes, c'est ridicule. Mes contributions doivent provenir de l'analyse des résultats et leur obtention. Par exemple pour def\_parser : je me suis affranchi de l'extraction de statistiques classique utilisée dans les outils commerciaux. En partant du fichier .def standard, on peut obtenir les mêmes informations. Ces informations sont extrêmement utiles dans le sens où elles permettent de mettre en évidence le lien entre le grain du clustering et l'interconnectivité des clusters, et ce peu importe l'architecture. Il y a clairement une corrélation qui nous permettrait de dire que les résultats obtenus pour une architecture typique sont transposables dans une certaine mesure à d'autres architectures similaires. En ce qui concerne PHONEY, c'est un framework complet qui permet de facilement comparer différentes implémentations d'algos de partitionnement en utilisant des métriques personnalisées. C'est un moyen de tester et fine-tuner les algos à utiliser partitionner les architectures. Ces deux outils sont aussi interfaçables entre eux afin d'assurer la continuité du workflow. Parmi les étapes suivantes, on peut évoquer la comparaison de PaToH et hMetis et pourquoi pas d'autres implémentations, la génération de netlists partitionnées, etc.}
 
 \section{Graph Extraction}\label{sec:graph-extr}
-We developped \texttt{PHONEY}\footnote{“Partitioning of Hypergraph Obviously Not EasY”, \url{https://github.com/parastuffs/metis_unicorn/blob/master/script/phoney.py}}, a software tool extracting the hypergraph of a 2D placed and routed design, feeding it to a partitioner and formating the output for the \gls{pr} tool to process back.
+We developed \texttt{PHONEY}\footnote{“Partitioning of Hypergraph Obviously Not EasY”, \url{https://github.com/parastuffs/metis_unicorn/blob/master/script/phoney.py}}, a software tool extracting the hypergraph of a 2D placed and routed design, feeding it to a partitioner and formating the output for the \gls{pr} tool to process back.
 The processing is pretty straightforward: each cluster of the design becomes a vertex and whenever a net is connecting cells belonging to different clusters, the net becomes an hyperedge.
 The (hyper)graph is then formated in such a way that the partitioner can do its job and generate nice and clean partitions.
 The partitioner in question can be any library with a command-line interface; all that is needed is one function translating our representation of a graph into one understandable by the library.
 So far, we support METIS, hMETIS and PaToH.
 The support for METIS was added to compare the partition quality between a hypergraph and its corresponding graph.
-Notwithstanding the motiviation for hypergraphs we discussed in section~\ref{sec:why-hypergraph}, we did not note a significant difference in quality between the two approaches.
+Notwithstanding the motivation for hypergraphs we discussed in section~\ref{sec:why-hypergraph}, we did not note a significant difference in quality between the two approaches.
 
 
 ~\newline{}
@@ -1039,11 +1039,11 @@ Here follows a summary of the main features of \texttt{def\_parser}:
 \end{itemize}
 
 
-\section{Naïve Clustering}\label{sec:clustering}
+\section{Naive Clustering}\label{sec:clustering}
 
 The aim of our clustering is manyfold: (i) reduce the order of the graph for the partitioner to have an easier job, (ii) slice the die and analyze the interconnectivity between the clusters, (iii) be a proof-of-concept clustering that allows us to already prepare the extraction of statistics for more complex clustering methods that may replace this one.
 
-The way it is implemented is simplistic and naïve: we slice the die into a grid with each cell being a cluster.
+The way it is implemented is simplistic and naive: we slice the die into a grid with each cell being a cluster.
 We consider that the \gls{pr} has placed close to each other standard cells that participate to the same logical function, hence making them a sound logical block that can be used as a cluster.
 By playing on the granularity of the clustering, we hope to highlight the impact of inter-cluster wire length when tackling the gate- or block-level dilemma.
 
@@ -1102,7 +1102,7 @@ Using \texttt{PHONEY}, we extracted the following weights for our graphs:
 	\end{itemize}
 \end{itemize}
 
-Note that if the partitioner supports multiple weights at the same time for the vertices, the edges can only be caracterized with a single weight.
+Note that if the partitioner supports multiple weights at the same time for the vertices, the edges can only be characterized with a single weight.
 
 Our first objective was to find out the potential of our workflow by studying the \gls{wl} reduction when going 3D.
 The figure~\ref{fig:res-3dwl} summarizes two reductions: the total \gls{wl} and the longest net shortening.
@@ -1115,7 +1115,7 @@ The figure~\ref{fig:res-3dwl} summarizes two reductions: the total \gls{wl} and 
 \end{figure}
 
 We could have expected RTX to yield results between SPC and CCX due to its balanced design.
-However, whilst there are some gains, the median is worst than SPC.
+However, whilst there are some gains, the median is worse than SPC.
 % This can be explained by the pre-clustering of the architecure that is probably too coarse for such a small module.
 A more interesting result about RTX is that its set of solutions spans from $0$ to $53\%$ \gls{wl} total reduction, showing that for some designs, the choice of appropriate metrics is critical.
 At the same time, the difference between the first and third quartile of SPC is only around $7\%$.
@@ -1265,7 +1265,7 @@ For our intra-cluster study, we will focus on the LDPC architecture, as the othe
 \begin{figure}[!h]
 \centering
 \includegraphics[width=.8\textwidth]{img/intra-clust-con}
-\caption{Intra-cluster connectivity for the LDPC architecture. The clustering applied is geometrical and each cluster is numbered from 1 in the lower left corner of the die to 484 in the top righ corner and progressing on horizontal rows of 22 clusters.}
+\caption{Intra-cluster connectivity for the LDPC architecture. The clustering applied is geometrical and each cluster is numbered from 1 in the lower left corner of the die to 484 in the top right corner and progressing on horizontal rows of 22 clusters.}
 \label{fig:intra-clust-con}
 \end{figure}
 % 484 clusters for LDPC@7nm => roughly 88 cells per cluster
@@ -1277,7 +1277,7 @@ More interestingly, it shows us that a lot of clusters do not have any exclusive
 When our partitioning objective is to reduce the 3D nets, we should not increase the number of clusters at the borders as it would increase the inter-cluster connectivity and potentially the amount of 3D nets.
 On the other hand, the clusters without intra-nets could be even more reduced without creating new intercluster nets.
 
-This metric could be used to move our clustering from naïve to a bit more clever: by identifying the parts with higher intra-connectivity density, we could implement an adaptative grain coarsening, coarser at the border and finner in the inside.
+This metric could be used to move our clustering from naive to a bit more clever: by identifying the parts with higher intra-connectivity density, we could implement an adaptative grain coarsening, coarser at the border and finner in the inside.
 
 
 
@@ -1325,19 +1325,19 @@ Doing so will require each cut net to be converted into an external signal on bo
 Although the toolchain is currently working, it is quite cumbersome to use.
 All the configuration is set through a bunch of global variables and the lack of documentation is not helping.
 
-In order for the toolchain to gain in quality, a proper user interface needs to be developped and some documentation to be written.
+In order for the toolchain to gain in quality, a proper user interface needs to be developed and some documentation to be written.
 
 
 
 
 \section{Clustering}
 As presented in section~\ref{sec:mul-para}, the multilevel paradigm already clusters the vertices of the graph during the coarsening phase.
-The purpose of the naïve clustering we are applying on the design, is (i) to reduce the order of the graph before feeding it to the partitioner, and (ii) maintain the integrity of logical blocks, hence easing the subsequent \gls{pr} of the partitioned dies.
+The purpose of the naive clustering we are applying on the design, is (i) to reduce the order of the graph before feeding it to the partitioner, and (ii) maintain the integrity of logical blocks, hence easing the subsequent \gls{pr} of the partitioned dies.
 At the moment, we do not yet need a very efficient clustering for the current purpose.
 A future improvement could be to develop a more sophisticated algorithm that could replace the coarsening and uncoarsening of the multilevel paradigm, allowing us to fall back on a raw graph partitioning algorithm.
 
 This would also be the occasion to test the validity of the discussion between gate- and block-level partitioning.
-With the rise of multi-level schemes, a gate-level graph would need to be coarsened before the actual partitioning can take place.
+With the rise of multilevel schemes, a gate-level graph would need to be coarsened before the actual partitioning can take place.
 That clustering would group the gates into pseudo-logical blocks (depending on the coarsening algorithm used) that could be close to the block-level graph.
 In that case, is there even a sense in differentiating the two approaches?
 % Hasn't this been done before? Probably.
