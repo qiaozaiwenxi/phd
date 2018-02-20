@@ -2,29 +2,47 @@ import os
 import shutil
 from natsort import natsorted # https://pypi.python.org/pypi/natsort
 import time
+import sys, getopt
 
 """
-This script copies every clustering files from on design
-into the temp dir of phoney.
-It then call phoney to partition the design and then
-executes the csv-extracting scripts.
+This script calls phoney on every clusterings of a
+given design. Then it executes the csv-extracting scripts.
+
+Usage: script -d <Parent directory of clusters> -p <path to phoney> -c <path to connectivity script> -n <path to netcut script>
 """
 
 tStart = time.time()
 
-clusterDir = "/home/para/dev/def_parser/2018-01-15_15-31-14/"
-partitionDir = "/home/para/dev/metis_unicorn/temp_design/"
-phoneyScript = "/home/para/dev/metis_unicorn/script/phoney.py"
+clusterDir = ""
+phoneyScript = ""
+connectivityScript = ""
+netCutScript = ""
+try:
+    opts, args = getopt.getopt(sys.argv[1:],"d:p:c:n:")
+except getopt.GetoptError:
+    print "YO FAIL"
+else:
+    for opt, arg in opts:
+        if opt == "-d":
+            clusterDir = arg
+        elif opt == "-p":
+            phoneyScript = arg
+        elif opt == "-c":
+            connectivityScript = arg
+        elif opt == "-n":
+            netCutScript = arg
 
-connectivityFile = "/home/para/dev/metis_unicorn/script/connectivity_partition.txt"
-connectivityScript = "/home/para/dev/metis_unicorn/script/netcut_to_csv.py"
+    if clusterDir == "":
+        clusterDir = "/home/para/dev/def_parser/2018-01-25_16-16-50/"
+    if phoneyScript == "":
+        phoneyScript = "/home/para/dev/metis_unicorn/script/phoney.py"
+    if connectivityScript == "":
+        connectivityScript = "/home/para/dev/metis_unicorn/script/netcut_to_csv.py"
+    if netCutScript == "":
+        netCutScript = "/home/para/dev/metis_unicorn/script/netcutlen_to_csv.py"
 
-netCutFile = "/home/para/dev/metis_unicorn/script/cutLength_partition.txt"
-netCutScript = "/home/para/dev/metis_unicorn/script/netcutlen_to_csv.py"
-
-# Delete the previous analysis files
-os.unlink(connectivityFile)
-os.unlink(netCutFile)
+connectivityFile = "connectivity_partition.txt"
+netCutFile = "cutLength_partition.txt"
 
 for subdir in natsorted(os.listdir(clusterDir)):
     clusterSubDir = os.path.join(clusterDir, subdir)
@@ -33,38 +51,18 @@ for subdir in natsorted(os.listdir(clusterDir)):
     print "##############################################"
     print "Processing " + clusterSubDir
 
-    # Delete everything in the target directory
-    for file in os.listdir(partitionDir):
-        os.unlink(os.path.join(partitionDir, file))
-
-    # Copy everything from the source to the target
-    for file in os.listdir(clusterSubDir):
-        shutil.copy(os.path.join(clusterSubDir, file), partitionDir)
-
-    print partitionDir + " content replaced. Let's do this."
-
     # Partition
     # TODO This is ugly as shit. I should import the script.
     # Phoney is stupid, so I need to change the working directory.
     os.chdir("/".join(phoneyScript.split('/')[:-1]))
-    os.system("python " + phoneyScript)
+    os.system("python " + phoneyScript + " -d " + clusterSubDir)
+    
+    for subsubdir in natsorted(os.listdir(clusterSubDir)):
+        partitionDir = os.path.join(clusterSubDir, subsubdir)
+        if os.path.isdir(partitionDir):
+            os.system("python " + connectivityScript + " -f " + os.path.join(partitionDir, connectivityFile))
+            os.system("python " + netCutScript + " -f " + os.path.join(partitionDir, netCutFile))
 
     print "###############################################"
-
-# Analysis
-# Backup the raw file
-newConnectivityFile = connectivityFile.split('.')[0] + \
-                    "_" + design + "_" + clustering + \
-                    time.strftime('_%Y-%m-%d_%H-%M-%S') + \
-                    connectivityFile.split('.')[-1]
-shutil.copy(connectivityFile, newConnectivityFile)
-os.system("python " + connectivityScript)
-
-newNetCutFile = netCutFile.split('.')[0] + \
-                "_" + design + "_" + clustering + \
-                time.strftime('_%Y-%m-%d_%H-%M-%S') + \
-                netCutFile.split('.')[-1]
-shutil.copy(netCutFile, newNetCutFile)
-os.system("python " + netCutScript)
 
 print "Total duration: " + str(time.time() - tStart)
