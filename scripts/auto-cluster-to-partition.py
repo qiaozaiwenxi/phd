@@ -46,23 +46,24 @@ netCutFile = "cutLength_partition.txt"
 
 for subdir in natsorted(os.listdir(clusterDir)):
     clusterSubDir = os.path.join(clusterDir, subdir)
-    design = clusterSubDir.split('/')[-1].split('_')[0]
-    clustering = clusterSubDir.split('/')[-1].split('_')[1]
-    print "##############################################"
-    print "Processing " + clusterSubDir
+    if os.path.isdir(clusterSubDir):
+        design = clusterSubDir.split('/')[-1].split('_')[0]
+        clustering = clusterSubDir.split('/')[-1].split('_')[1]
+        print "##############################################"
+        print "Processing " + clusterSubDir
 
-    # Partition
-    # TODO This is ugly as shit. I should import the script.
-    # Phoney is stupid, so I need to change the working directory.
-    os.chdir("/".join(phoneyScript.split('/')[:-1]))
-    os.system("python " + phoneyScript + " -d " + clusterSubDir)
-    
-    for subsubdir in natsorted(os.listdir(clusterSubDir)):
-        partitionDir = os.path.join(clusterSubDir, subsubdir)
-        if os.path.isdir(partitionDir):
-            os.system("python " + connectivityScript + " -f " + os.path.join(partitionDir, connectivityFile))
-            os.system("python " + netCutScript + " -f " + os.path.join(partitionDir, netCutFile))
+        # Partition
+        # TODO This is ugly as shit. I should import the script.
+        # Phoney is stupid, so I need to change the working directory.
+        os.chdir("/".join(phoneyScript.split('/')[:-1]))
+        os.system("python " + phoneyScript + " -d " + clusterSubDir)
+        
+        for subsubdir in natsorted(os.listdir(clusterSubDir)):
+            partitionDir = os.path.join(clusterSubDir, subsubdir)
+            if os.path.isdir(partitionDir):
+                os.system("python " + connectivityScript + " -f " + os.path.join(partitionDir, connectivityFile))
+                os.system("python " + netCutScript + " -f " + os.path.join(partitionDir, netCutFile))
 
-    print "###############################################"
+        print "###############################################"
 
 print "Total duration: " + str(time.time() - tStart)
