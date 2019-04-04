@@ -1,0 +1,4 @@
+\ProvidesFile{t1meta-book.fd}
+\DeclareFontFamily{T1}{meta-book}{}
+\DeclareFontShape{T1}{meta-book}{m}{n}{ <-> meta-book}{}
+\pdfmapline{+meta-book\space <meta-book.ttf\space <T1-WGL4.enc}

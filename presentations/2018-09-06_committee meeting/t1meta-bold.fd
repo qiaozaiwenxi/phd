@@ -1,0 +1,4 @@
+\ProvidesFile{t1meta-bold.fd}
+\DeclareFontFamily{T1}{meta-bold}{}
+\DeclareFontShape{T1}{meta-bold}{m}{n}{ <-> meta-bold}{}
+\pdfmapline{+meta-bold\space <meta-bold.ttf\space <T1-WGL4.enc}

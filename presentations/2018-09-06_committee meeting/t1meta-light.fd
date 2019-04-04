@@ -1,0 +1,4 @@
+\ProvidesFile{t1meta-light.fd}
+\DeclareFontFamily{T1}{meta-light}{}
+\DeclareFontShape{T1}{meta-light}{l}{n}{ <-> meta-light}{}
+\pdfmapline{+meta-light\space <meta-light.ttf\space <T1-WGL4.enc}
