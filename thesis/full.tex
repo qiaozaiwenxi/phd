@@ -1,0 +1,27 @@
+\documentclass[a4paper,11pt]{article}
+
+\input{preamble.tex}
+
+\makeglossaries
+% \include{glossary}
+
+\begin{document}
+
+\include{toolchain}
+
+\include{clustering}
+
+\include{partitioning}
+
+
+\glsaddall
+\printglossaries
+\clearpage
+
+\newpage
+\nocite{*}
+\bibliographystyle{abbrvnat}
+% \bibliographystyle{acm}
+\bibliography{bibliography.bib}
+
+\end{document}

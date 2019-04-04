@@ -5,7 +5,7 @@
 				Such a list can either be \textit{pin-oriented} or \textit{net-oriented}.
 				The former focuses on the design components or their associated nets, the later on the nets and their associated components.
 				\newline
-				A netlist can either be hierarchical or flat.}
+				A netlist can either be hierarchical or flat}
 }
 
 \newglossaryentry{gl:primitive}
@@ -23,5 +23,89 @@
 	description={Level at which are described the signals and the values they should take}
 }
 
+\newglossaryentry{gl:clique}
+{
+	name=clique,
+	description={Sub-graph among which all vertices are connected to each other}
+}
+
+\newglossaryentry{gl:kclique}
+{
+	name=k-clique,
+	description={\Gls{gl:clique} composed of $k$ nodes}
+}
+
+\newglossaryentry{gl:edge}
+{
+	name=edge,
+	description={}
+}
+
+\newglossaryentry{gl:hyperedge}
+{
+	name=hyperedge,
+	description={}
+}
+
+\newglossaryentry{gl:vertex}
+{
+	name=vertex,% TODO how to add the plural form?
+	description={}
+}
+
+\newglossaryentry{gl:graph-order}
+{
+	name=graph order,
+	description={The order of a graph $G$, denoted $|G|$, is the number of vertices in $G$}
+}
+
+\newglossaryentry{gl:k-way-part}
+{
+	name=k-way partitioning,
+	description={A $k$-way partitioning of a graph is a partitioning resulting in $k$ partitions}
+}
+
+\newglossaryentry{jaccard-index}
+{
+	name=Jaccard index,
+	description={The Jaccard index of two sets $A$ and $B$ can be defined as $\frac{|A \cap B|}{|A \cup B|}$}
+}
+
+\newglossaryentry{gl:wafer}
+{
+	name=wafer,
+	description={In integrated circuits fabrication, the wafer is the substrate on which the circuits are built}
+}
+
+\newglossaryentry{gl:yield}
+{
+	name=yield,
+	description={In integrated circuits fabrication, the yields denotes the proportion of properly functioning chips on a \gls{gl:wafer}}
+}
+
 \newacronym{sa}{SA}{Simulated Annealing}
 \newacronym{ts}{TS}{Tabu Search}
+\newacronym{pr}{P\&R}{Place and Route}
+\newacronym{ic}{IC}{Integrated Circuit}
+\newacronym{kl}{KL}{Kernighan-Lin}
+\newacronym{fm}{FM}{Fiduccia-Mattheyses}
+\newacronym{ec}{EC}{Edge Coarsening}
+\newacronym{hec}{HEC}{Hyperedge Coarsening}
+\newacronym{mhec}{MHEC}{Modified Hyperedge Coarsening}
+\newacronym{hem}{HEM}{Heavy Edge Matching}
+\newacronym{wl}{WL}{wire length}
+\newacronym{f2f}{F2F}{face-to-face}
+\newacronym{f2b}{F2B}{face-to-back}
+\newacronym{tsv}{TSV}{through-silicon-via}
+\newacronym{w2w}{W2W}{wafer-to-wafer}
+\newacronym{d2w}{D2W}{die-to-wafer}
+\newacronym{d2d}{D2D}{die-to-die}
+\newacronym{beol}{BEOL}{back-end-of-line}
+\newacronym{feol}{FEOL}{front-end-of-line}
+\newacronym{cts}{CTS}{clock tree synthesis}
+\newacronym{pdn}{PDN}{power delivery network}
+\newacronym{m3d}{M3D}{monolithic 3D IC}
+\newacronym{miv}{MIV}{monolithic inter-tier via}
+\newacronym{def}{DEF}{Design Exchange Format}
+\newacronym{lef}{LEF}{Library Exchange Format}
+\newacronym{itrs}{ITRS}{International Technology Roadmap for Semiconductors}

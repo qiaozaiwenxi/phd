@@ -1,0 +1,117 @@
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+% \usepackage{tgtermes}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+% \usepackage{subcaption}%subfigures, not compatible with the 'caption' package
+\usepackage[breaklinks=true,hidelinks]{hyperref}
+% \usepackage[breaklinks=true]{hyperref}
+% \usepackage[xindy, toc, nonumberlist]{glossaries}
+\usepackage[toc, acronym, nonumberlist]{glossaries}
+% \gls{label} to invoke the entry.
+% \glsreset{label} to reset the first occurence of the entry.
+% \acrlong{label} to print the long version of the acronym.
+% \acrshort{label} to print the short version of the acronym.
+
+\usepackage{todonotes}
+
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\itshape} 	% https://tex.stackexchange.com/questions/235852/how-to-make-all-quotes-italicised
+										% 
+
+\usepackage{textcomp} % For \textmu, among other things.
+\linespread{1.1}
+
+
+% %%%%%%%%% vvvvvvv
+% % Anthony Debruyn 
+% \let\oldCaption\caption
+% \renewcommand{\caption}[2]{
+% \oldCaption[#1]{{\small\bfseries #1: }\small #2}
+% }
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % NEW STYLES
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \captiondelim{ -- }
+% \captionnamefont{\small\bfseries}
+% \captiontitlefont{\small}
+% \precaption{\rule{\linewidth}{0.4pt}\\}
+% % Anthony Debruyn
+% %%%%%%%%% ^^^^^^^
+
+
+
+% \usepackage{geometry}
+% \geometry{
+%   top=0.8in,
+%   inner=0.7in,
+%   outer=0.7in,
+%   bottom=1in,
+%   headheight=3ex,
+%   headsep=5ex,
+% }
+\usepackage{fullpage}
+
+\usepackage{fancyhdr}
+
+\usepackage[margin=1cm, small]{caption}
+
+
+
+\usepackage{mdframed}
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=0,%Space above the frame. I want none so that it's close to the def title.
+  skipbelow=2em,%Below the frame. Leave it some room to breath.
+  innerbottommargin=0,%Margin between the bottom of the text and the bottom of the frame.
+  innertopmargin=0,%Margin between the top of the text and the top of the frame.
+]{siderules}
+
+% \usepackage[]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{amsthm}%theorems
+\newtheoremstyle{customdef}%
+	{\topsep}% above the theorem
+	{\topsep}% below the theorem
+	% {\itshape}% body
+	{}% body
+	{0pt}% indent
+	{\bfseries}% head
+	{}% punctuation between head and body
+	{ }% Space after theorem head
+	{\thmname{#1}\thmnumber{ #2}: \thmnote{#3}}
+\theoremstyle{customdef}
+\newtheorem{definition}{Definition}
+
+% Arg1: Title of the definition
+% Arg2: Label
+\newenvironment{defi}[2]
+ {\begin{definition}[#1]\label{#2}\end{definition}\begin{siderules}}
+ {\end{siderules}}
+ % {\begin{definition}[#1]\label{#2}\end{definition}\vspace{-1em}\begin{siderules}\vspace{-0.5em}}
+ % {\vspace{-0.5em}\end{siderules}}
+
+
+%https://tex.stackexchange.com/questions/84478/how-to-format-title-and-abstract
+\renewenvironment{abstract}{%
+\begin{center}\begin{minipage}{0.85\textwidth}
+\rule{\textwidth}{1pt}}
+{\par\noindent\rule{\textwidth}{1pt}\end{minipage}\end{center}}
+
+
+\makeglossaries
+\include{glossary}
+
+
+\usepackage{titling}
+\setlength{\droptitle}{10em}
+
+\author{Quentin Delhaye}
+\date{}
+\title{Random stuff}
