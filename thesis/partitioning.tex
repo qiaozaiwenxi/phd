@@ -1,5 +1,30 @@
 \section{Partitioning}
 
+\subsection{From hypergraph to graph}
+Although we argued that going from a hypergraph to a graph had no incidence on the description of the system, there might be a consideration we overlooked.
+The way it works is simply creating new nets for all pairs of cells in a hyperedge, with a length equal to the length of the hyperedge.
+However, all the gates are not necessarily close to each other in a hyperedge, there might be some dispersion.
+This remark lead to the dispersion clustering in section~\ref{sec:disp-clust}.
+
+\subsection{Net dispersion and unbalance}\label{sec:part-disp}
+When we cut a long net, we should be happy, a long connection being made shorter.
+But should we?
+
+A long net can mean several things:
+\begin{itemize}
+	\item Two cells far away from each other. The ideal case, that is exactly the type of net we want to cut. However, those à very rare.
+	\item Several cells interconnected with a high disperion (see~\ref{sec:disp-clust}).
+	Idealy, we would want to separate the isolated cell from the rest.
+	But if we cut in the pack of gates close to each other, this might degrade the performance of the resulting 3D design.
+	\item Lots of cells closely interconnected.
+	This net should actually not be cut.
+	This type of problem could be alleviated by dividing the wire-length of a net by the amount of interconnect gates. But again, this might ahe the disadvantage to put forward short nets with only two gates.
+\end{itemize}
+
+
+We could compute the dispersion before and after partitioning.
+If a dispersion has increased for a given net, it means we did not cut it correctly and probably made the situation worse.
+
 \subsection{MIN-CUT}
 
 \subsection{MAX-CUT}

@@ -5,10 +5,45 @@
 \subsection{Hierarchical geometrical}
 
 \subsection{Random}
+Create a set of clusters and assign the gates randomly in each of them, following a uniform random variable.
+Its purpose is to set a reference clustering that should yield worst results than any of the more thouroughly designed ones.
 
 \subsection{Progressive wire-length}
+The main purpose behind this method is to hide the shortest nets in the design, as those might degrade performance when cut.
 
-\subsection{Dispersion}
+In the first version, the objective was a certain amount of clusters to reach.
+First, all gates are their own cluster and a list of nets is sorted based on their length.
+Then, all the gates connecting the shortest net in the list are merged into a cluster.
+The problem is that the initial cluster with the shortest net would absord all its neighbourgs, forming a mega-cluster that would render bipartitioning impossible.
+
+In a second version, the net length was replaced by a multiple of the \gls{ac:agw}.
+This allows to set a precise target on the minimal wire-length in the design, which could be directly correlated to the 3D interconnection pitch.
+This works well, but has the same problem as the legacy progressive-wl algorithm: mega-clusters.
+
+In a third version, a random variable was introduce to alleviate that problem.
+Instead of systematicaly merge the nets, they are only merged with a certain magic probability.
+
+
+\subsection{Dispersion}\label{sec:disp-clust}
+The dispersion began as a metric to compare the different nets.
+In any given net, the interconnected cells are not all packed together, they are dispersed to a certain degree.
+The idea is to first normalize the direct distance of all the pairs of cells, then sum their inverse.
+To avoid skewing the results in favor of nets with more gates (they would always have a lower dispersion), we need to divide the value by the amount of pairs of gates.
+That way, three gates all at a distance of $x$ from each other have the same weight as two gates at the same $x$ distance.
+This amount of pairs if given by ``n choose k".
+
+The metric can thus be summarized as
+\[ \sum_l \frac{1}{l}/ \binom{n}{2} \] %\binom{n}{k} = \frac{n!}{k!(n-k)!}
+Where $l$ is the normalized distance between two cells and $n$ is the amount of cells in the net.
+\todo[inline]{Add a figure showing a dispersed net, the distances and the dispersion value.}
+
+All nets could be caracterized with this new metric.
+The clustering algorithm could then be similar to progressive-wl, but merging the lowest dispersion first.
+
+Visually, I could confirm that a high dispersion corresponds to a net with an outlier gate.
+
+This metric highlights an other problem that may happen during the partitioning.
+It is discussed in section~\ref{sec:part-disp}.
 
 \subsection{K-means}
 The K-means clustering method forms clusters by agregating elements around \textit{k} key values.
@@ -48,4 +83,4 @@ All the centers are evenly spaced at first
 
 The convergence is reached when the difference between the center of gravity and center of mass is small enough: $|c_g - c_m| < \varepsilon$.
 We could let the algorithm run until their is no difference anymore for each cluster, but the extreme convergence point might never be reached, and even in the case it could be reached, the computation time would drasticaly increase compared to a more conservative approach.
-We thus chose the convergence condition as the $95^{th}$ percentile of those difference: $p_{95}(|c_g - c_m|) < 1 \cdot AGW$, where $AGW$ is the \acrlong{agw} in the design.
+We thus chose the convergence condition as the $95^{th}$ percentile of those difference: $p_{95}(|c_g - c_m|) < 1 \cdot AGW$, where $AGW$ is the \acrlong{ac:agw} in the design.
