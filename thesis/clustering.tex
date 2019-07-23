@@ -9,3 +9,43 @@
 \subsection{Progressive wire-length}
 
 \subsection{Dispersion}
+
+\subsection{K-means}
+The K-means clustering method forms clusters by agregating elements around \textit{k} key values.
+Those values can either be set at random or cleverly placed in the middle of the data set.
+
+In our case, the idea is to place points in the design, evenly or randomly, that will act as centers of gravity $c_g$.
+For each of those, we will clusterize the pairs of gates which closest gravity center is that one.
+This first step actually results in a clustering close to the naive geometric one.
+
+Next, for each cluster, we compute a center of mass $c_m$ from all the gates position, which will become a new center of gravity for the next iteration: $c_m = \left( \frac{\sum_{i = 0}^{n} g_{x,i}}{n}, \frac{\sum_{j = 0}^{n} g_{y,j}}{n} \right)$, for $n$ gates of coordinates $(g_x, g_y)$.
+We then iterate until convergence.
+
+For the first step, we can have two possibilities:
+1. The target amount of clusters we want to create is the square value of a natural number.
+We thus simply need to place them regularly in the design as such (9 clusters):
+\begin{verbatim}
+-----------
+| x  x  x |
+| x  x  x |
+| x  x  x |
+-----------
+\end{verbatim}
+
+2. It's not. In that case, there will be an extra gravity line (11 clusters):
+\begin{verbatim}
+-----------------
+|    x     x    |
+|  x    x    x  |
+|  x    x    x  |
+|  x    x    x  |
+-----------------
+\end{verbatim}
+The extra line can have up to $(a+1)^2 - a^2 - 1 = 2a$ elements, where $a = \lfloor \sqrt{n} \rfloor$ for $n$ clusters.
+We could thus have up to $\frac{2a}{a^2} = \frac{2}{a}$ clusters that are 'out-of-shape'.
+
+All the centers are evenly spaced at first
+
+The convergence is reached when the difference between the center of gravity and center of mass is small enough: $|c_g - c_m| < \varepsilon$.
+We could let the algorithm run until their is no difference anymore for each cluster, but the extreme convergence point might never be reached, and even in the case it could be reached, the computation time would drasticaly increase compared to a more conservative approach.
+We thus chose the convergence condition as the $95^{th}$ percentile of those difference: $p_{95}(|c_g - c_m|) < 1 \cdot AGW$, where $AGW$ is the \acrlong{agw} in the design.
