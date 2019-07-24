@@ -23,6 +23,8 @@ This works well, but has the same problem as the legacy progressive-wl algorithm
 In a third version, a random variable was introduce to alleviate that problem.
 Instead of systematicaly merge the nets, they are only merged with a certain magic probability.
 
+\todo[inline]{\url{https://en.wikipedia.org/wiki/Single-linkage_clustering}}
+
 
 \subsection{Dispersion}\label{sec:disp-clust}
 The dispersion began as a metric to compare the different nets.
@@ -84,3 +86,25 @@ All the centers are evenly spaced at first
 The convergence is reached when the difference between the center of gravity and center of mass is small enough: $|c_g - c_m| < \varepsilon$.
 We could let the algorithm run until their is no difference anymore for each cluster, but the extreme convergence point might never be reached, and even in the case it could be reached, the computation time would drasticaly increase compared to a more conservative approach.
 We thus chose the convergence condition as the $95^{th}$ percentile of those difference: $p_{95}(|c_g - c_m|) < 1 \cdot AGW$, where $AGW$ is the \acrlong{ac:agw} in the design.
+
+
+\todo[inline]{\url{https://en.wikipedia.org/wiki/Voronoi_diagram}}
+\todo[inline]{\url{https://en.wikipedia.org/wiki/Point_location}}
+\todo[inline]{\url{https://en.wikipedia.org/wiki/Nearest_neighbor_search}}
+\todo[inline]{\url{https://fr.slideshare.net/awebneck/the-post-office-problem}}
+\todo[inline]{\url{https://pafnuty.wordpress.com/2013/08/14/non-convex-sets-with-k-means-and-hierarchical-clustering/}}
+
+
+\subsection{Evaluate the quality of a cluster}
+\begin{itemize}
+	\item Cohesion: for each element $e$ in the cluster $A$, find the average distance between $e$ and all the other elements in the cluster.
+	\item Separation: find the average distance between $e$ and all the elements in the nearest cluster $B$.
+	\item Silouhette coefficient of $e$: $s(e) = \frac{B - A}{max(A,B)}$.
+	A cluster is at its best when $s(e) = 1$, at its worse when $s(e) = -1$.
+\end{itemize}
+
+\paragraph{Reference}
+\begin{itemize}
+	\item \url{https://pafnuty.wordpress.com/2013/02/04/interpretation-of-silhouette-plots-clustering/}
+	\item \url{https://en.wikipedia.org/wiki/Silhouette_(clustering)}
+\end{itemize}
