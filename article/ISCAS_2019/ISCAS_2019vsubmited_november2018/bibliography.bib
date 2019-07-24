@@ -1,0 +1,259 @@
+@article{Mattii2017,
+abstract = {{\textcopyright} 2017 IEEE. In this paper we propose a novel Design-Technology Co-Optimization (DTCO) framework that enables PDK generation and design implementation of sub-10nm technology nodes. The framework allows to study the impact of different technology options at design level and use effective design Power, Performance and Area (PPA) to decide on right technology option. Design implementation flow is IR-drop aware, allowing integration of optimized Power Delivery Network (PDN) for different device/cell options. Using N5-like technology node assumptions (contacted poly and metallization pitch of 42 and 32nm), we generate digital PDKs for different device (finFET, 2  {\&}  3 nanowires) and standard cell options (3, 2 or 1 fins  {\&}  7.5 or 6-Tracks cell height). Different PDKs have been used to implement and characterize a wire dominated circuit. Our study shows that the design PDN/IR-drop awareness is fundamental to complete DTCO approach for sub-10nm nodes. Using our dedicated design methodology we reach the IR-drop target of 2.5{\%} VDD (on the lowest metal layers), while minimizing the area degradation induced by the PDN. Further, we demonstrate that such optimized PDN is mandatory to enable the 20{\%} area gain when moving from 7.5 to 6-Tracks cell height. Finally, we show that the impact of different device options is in range of 15{\%} Power, 2X Performance and 20{\%} Area, further validating the need of a fully integrated DTCO.},
+author = {Mattii, Luca and Milojevic, Drago Mir and Debacker, Peter and Sherazi, Yasser and Berekovic, Mladen and Raghavan, Praveen},
+doi = {10.1109/ICCAD.2017.8203764},
+isbn = {9781538630938},
+issn = {10923152},
+journal = {IEEE/ACM International Conference on Computer-Aided Design, Digest of Technical Papers, ICCAD},
+keywords = {DTCO,FinFET,IR-drop,N5,Nanowires,P{\&} R,PDN,PPA},
+pages = {89--94},
+title = {{IR-drop aware Design {\&} technology co-optimization for N5 node with different device and cell height options}},
+volume = {2017-November},
+year = {2017}
+}
+
+@misc{imec3nm,
+  title = {{Imec and Cadence Tape Out Industry's First 3nm Test Chip}},
+  howpublished = {\url{https://www.allaboutcircuits.com/news/world-first-3nm-tapeout-lithography-Cadence-Design-Systems-Imec/}},
+  note = {Accessed: 2018-10-15}
+}
+
+@article{Panth,
+abstract = {In a gate-level monolithic 3D IC (M3D), all the transistors in a sin-gle logic gate occupy the same tier, and gates in different tiers are connected using nano-scale monolithic inter-tier vias. This design style has the benefit of the superior power-performance quality of-fered by flat implementations (unlike block-level M3D), and zero total silicon area overhead compared to 2D (unlike transistor-level M3D). In this paper we develop, for the first time, a complete RTL-to-GDSII design flow for gate-level M3D. Our tool flow is based on commercial tools built for 2D ICs and enhanced with our 3D-specific methodologies. We use this flow along with a 28nm PDK to build layouts for the OpenSPARC T2 core. Our simulations show that at the same performance, gate-level M3D offers 16{\%} total power reduction with 0{\%} area overhead compared to com-mercial quality 2D IC designs.},
+author = {Panth, Shreepad a. and Samadi, Kambiz and Du, Yang and Lim, Sung Kyu},
+doi = {10.1145/2627369.2627642},
+isbn = {9781450329750},
+issn = {15334678},
+journal = {Proceedings of the 2014 international symposium on Low power electronics and design - ISLPED '14},
+keywords = {monolithic 3d,timing closure},
+pages = {171--176},
+title = {{Design and CAD methodologies for low power gate-level monolithic 3D ICs}},
+volume = {1},
+year = {2014}
+}
+
+
+@article{Chang2016,
+author = {Chang, Kyungwook and Sinha, Saurabh and Cline, Brian and Southerland, Raney and Doherty, Michael and Yeric, Greg and Lim, Sung Kyu},
+doi = {10.1145/2966986.2967013},
+isbn = {9781450344661},
+issn = {10923152},
+journal = {Proceedings of the 35th International Conference on Computer-Aided Design - ICCAD '16},
+pages = {1--8},
+title = {{Cascade2D: A design-aware partitioning approach to monolithic 3D IC with 2D commercial tools}},
+year = {2016}
+}
+
+
+@inproceedings{Moura2017,
+author = {Moura, Gisell and Pisoni, Filipe and Reis, Ricardo},
+booktitle = {Electronics, Circuits and Systems (ICECS), 2017 24th IEEE International Conference on},
+doi = {10.1109/ICECS.2017.8291996},
+isbn = {9781538619},
+keywords = {cell clustering,complex gates,logic synthesis,physical,physical synthesis,power reduction,transistor network},
+pages = {186--189},
+title = {{A Cell Clustering Technique to Reduce Transistor Count}},
+year = {2017}
+}
+
+@article{Samal2017,
+author = {Samal, Sandeep Kumar and Nayak, Deepak and Ichihashi, Motoi and Banna, Srinivasa and Lim, Sung Kyu},
+doi = {10.1109/S3S.2016.7804405},
+isbn = {9781509043903},
+journal = {2016 SOI-3D-Subthreshold Microelectronics Technology Unified Conference, S3S 2016},
+pages = {2--3},
+title = {{Monolithic 3D IC vs. TSV-based 3D IC in 14nm FinFET technology}},
+year = {2017}
+}
+
+@article{IhlerEdmund;WagnerDorothea;Wagner1993,
+abstract = {An elegant and general way to apply graph partitioning algorithms to hypergraphs would be to model hypergraphs by graphs and apply the graph algorithms to these models. Of course such models have to simulate the given hypergraphs with respect to their cut properties. An edge-weighted graph (V, E) is a cut-model for an edge-weighted hypergraph (V, H) if the weight of the edges cut by any bipartition of V in the graph is the same as the weight of the hyperedges cut by the same bipartition in the hypergraph. We show that there is no cut-model in general. Next we examine whether the addition of dummy vertices helps: An edge-weighted graph (V ??? D, E) is a mincut-model for an edge-weighted hypergraph (V, H) if the weight of the hyperedges cut by a bipartition of the hypergraphs vertices is the same as the weight of a minimum cut separating the two parts in the graph. We construct such models using positive and negative weights. On the other hand, we show that there is no mincut-model in general if only positive weights are allowed. ?? 1983.},
+author = {Ihler, Edmund and Wagner, Dorothea and Wagner, Frank},
+doi = {10.1016/0020-0190(93)90115-P},
+issn = {00200190},
+journal = {Information Processing Letters},
+keywords = {Combinatorial problems,VLSI layout,algorithm design},
+mendeley-tags = {Combinatorial problems,VLSI layout,algorithm design},
+number = {4},
+pages = {171--175},
+pmid = {18017754},
+title = {{Modeling hypergraphs by graphs with the same mincut properties}},
+volume = {45},
+year = {1993}
+}
+
+@article{Karypis1999,
+abstract = {In this paper, we present a new hypergraph-partitioning algorithm that is based on the multilevel paradigm. In the multilevel paradigm, a sequence of successively coarser hypergraphs is constructed. A bisection of the smallest hypergraph is computed and it is used to obtain a bisection of the original hypergraph by successively projecting and refining the bisection to the next level finer hypergraph. We have developed new hypergraph coarsening strategies within the multilevel framework. We evaluate their performance both in terms of the size of the hyperedge cut on the bisection, as well as on the run time for a number of very large scale integration circuits. Our experiments show that our multilevel hypergraph-partitioning algorithm produces high-quality partitioning in a relatively small amount of time. The quality of the partitionings produced by our scheme are on the average 6{\%}-23{\%} better than those produced by other state-of-the-art schemes. Furthermore, our partitioning algorithm is significantly faster, often requiring 4-10 times less time than that required by the other schemes. Our multilevel hypergraph-partitioning algorithm scales very well for large hypergraphs. Hypergraphs with over 100 000 vertices can be bisected in a few minutes on today's workstations. Also, on the large hypergraphs, our scheme outperforms other schemes (in hyperedge cut) quite consistently with larger margins (9{\%}-30{\%}).},
+author = {Karypis, George and Aggarwal, Rajat and Kumar, Vipin and Shekhar, Shashi},
+doi = {10.1109/92.748202},
+isbn = {0738-100X VO -},
+issn = {10638210},
+journal = {IEEE Transactions on Very Large Scale Integration (VLSI) Systems},
+keywords = {Circuit partitioning,Hypergraph partitioning,Multilevel algorithms},
+number = {1},
+pages = {69--79},
+title = {{Multilevel hypergraph partitioning: Applications in VLSI domain}},
+volume = {7},
+year = {1999}
+}
+
+@misc{Aykanat2011,
+author = {{\c{C}}ataly{\"{u}}rek, {\"{U}} and Aykanat, C},
+booktitle = {Encyclopedia of Parallel Computing},
+doi = {10.1007/978-0-387-09766-4_2261},
+isbn = {978-0-387-09765-7},
+keywords = {MatrixBenchmarks,PaToH,PaToHEnc},
+number = {May 2010},
+pages = {1--9},
+title = {{PaToH (Partitioning Tool for Hypergraphs)}},
+year = {2011}
+}
+
+@article{Goemans1995,
+abstract = {We present randomized approximation algorithms for the maximum cut (MAX CUT) and maximum 2-satisfiability (MAX 2SAT) problems that always deliver solutions of expected technique that randomly rounds the solution to a nonlinear programming relaxation. This relaxation can be interpreted both as a semidefinite program ans as an eigenvalue minimization problem. The best previously know approximation algorithms for these problems had performance guarantees of 1/2 for MAX CUT and 3/4 for MAX 2SAT. Slight extensions of our analysis lead to a 0.79607-approximation algorithm for the maximum directed cut problem (MAX DICUT) and a 0.758-approximation algorithm for the maximum directed cut problem known approximation algorithms had performance guarantees of 1/4 and 3/4 respectively. Our algorithm gives the first substantial progress in approximating MAX CUT in nearly twenty years, and represents the first use of semidefinite programming in the design of approximation algorithms.},
+author = {Goemans, Michel X. and Williamson, David P.},
+doi = {10.1145/227683.227684},
+issn = {00045411},
+journal = {Journal of the ACM},
+number = {6},
+pages = {1115--1145},
+title = {{Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming}},
+volume = {42},
+year = {1995}
+}
+
+@article{Burer2000,
+abstract = {The Goemans-Williamson randomized algorithm guarantees a high-quality approximation to the Max-Cut problem, but the cost associated with such an approximation can be excessively high for large-scale problems due to the need for solving an expensive semidefinite relaxation. In order to achieve better practical performance, we propose an alternative, rank-two relaxation and develop a specialized version of the Goemans-Williamson technique. The proposed approach leads to continuous optimization heuristics applicable to Max-Cut as well as other binary quadratic programs, for example the Max-Bisection problem.  A computer code based on the rank-two relaxation heuristics is compared with two state-of-the-art semidefinite programming codes that implement the Goemans-Williamson randomized algorithm, as well as with a purely heuristic code for effectively solving a particular Max-Cut problem arising in physics. Computational results show that the proposed approach is fast and scalable and, more importantly, attains a higher approximation quality in practice than that of the Goemans-Williamson randomized algorithm. An extension to Max-Bisection is also discussed as well as an important difference between the proposed approach and the Goemans-Williamson algorithm, namely that the new approach does not guarantee an upper bound on the Max-Cut optimal value.  Key words. Binary quadratic programs, Max-Cut and Max-Bisection, semidefinite relaxation, rank-two relaxation, continuous optimization heuristics.  AMS subject classifications. 90C06, 90C27, 90C30  1.},
+author = {Burer, Samuel and Monteiro, Renato D. C. and Zhang, Yin},
+doi = {10.1137/S1052623400382467},
+isbn = {1052-6234},
+issn = {1052-6234},
+journal = {SIAM Journal on Optimization},
+keywords = {90c06,90c27,90c30,ams 1991 subject classification,ation,binary quadratic programs,continuous optimization heuristics,max-cut and max-bisection,rank-two relaxation,semidefinite relax-},
+pages = {503--521},
+title = {{Rank-Two Relaxation Heuristics for Max-Cut and Other Binary Quadratic Programs}},
+volume = {12},
+year = {2000}
+}
+
+@article{Caldwell2000,
+abstract = {modified edge coarsening},
+annote = {MLPart},
+author = {Caldwell, AE E and Kahng, AB B and Markov, IL L},
+doi = {10.1109/ASPDAC.2000.835182},
+isbn = {0780359747},
+journal = {Proceedings of the 2000 Asia and {\ldots}},
+keywords = {CadKaMar00,MLPart},
+pages = {661--666},
+title = {{Improved algorithms for hypergraph bipartitioning}},
+year = {2000}
+}
+
+@book{KahngAndrewB.Lienig2011,
+abstract = {},
+archivePrefix = {arXiv},
+arxivId = {1011.1669},
+author = {Kahng, Andrew B. and Lienig, Jens and Markov, Igor L. and Hu, Jin},
+booktitle = {VLSI Physical Design: From Graph Partitioning to Timing Closure},
+doi = {10.1007/978-90-481-9591-6},
+eprint = {1011.1669},
+isbn = {9789048195909},
+issn = {1751-8113},
+number = {9},
+pages = {1--310},
+pmid = {25246403},
+publisher = {Springer Netherlands},
+title = {{VLSI physical design: From graph partitioning to timing closure}},
+volume = {25},
+year = {2011}
+}
+
+
+@article{Rokach2005,
+abstract = {This chapter presents a tutorial overview of the main clustering methods used in Data Mining. The goal is to provide a self-contained review of the concepts and the mathematics underlying clustering techniques. The chapter begins by providing measures and criteria that are used for determining whether two objects are similar or dissimilar. Then the clustering methods are presented, divided into: hierarchical, partitioning, density-based, model-based, grid-based, and soft-computing methods. Following the methods, the challenges of performing clustering in large data sets are discussed. Finally, the chapter presents how to determine the number of clusters.},
+author = {Rokach, Lior and Maimon, Oded},
+doi = {10.1007/0-387-25465-X_15},
+isbn = {0387244352},
+issn = {1532-2955},
+journal = {Data mining and knowledge discovery handbook},
+pages = {321--352},
+pmid = {25644982},
+title = {{Clustering methods}},
+year = {2005}
+}
+
+@article{Athikulwongse2014,
+abstract = {In this paper, we propose two methods used in 3D IC placement that effectively exploit the die-to-die thermal coupling in the stack. First, TSVs are spread on each die to reduce the local power density and vertically aligned across dies simultaneously to increase thermal conductivity to the heatsink. Second, we move high-power logic cells to the location that has higher conductivity to the heatsink while moving TSVs in the upper dies so that high-power cells are vertically overlapping below the TSVs. These methods are em- ployed in a force-directed 3D placement successfully and outper- form several state-of-the-art placers published in recent literature.},
+author = {Athikulwongse, Krit and Ekpanyapong, Mongkol and Lim, Sung Kyu},
+doi = {10.1109/TVLSI.2013.2285593},
+isbn = {9781450311991},
+issn = {10638210},
+journal = {IEEE Transactions on Very Large Scale Integration (VLSI) Systems},
+keywords = {3-D IC,placement,temperature,through-silicon vias (TSV).},
+number = {10},
+pages = {2145--2155},
+title = {{Exploiting die-to-die thermal coupling in 3-D IC placement}},
+volume = {22},
+year = {2014}
+}
+
+@article{Han2016,
+author = {Han, Kwangsoo and Kahng, Andrew B and Li, Jiajia and Diego, U C San},
+isbn = {9783981537079},
+pages = {61--66},
+title = {{Improved Performance of 3DIC Implementations Through Inherent Awareness of Mix-and-Match Die Stacking}},
+year = {2016}
+}@article{Li2006,
+author = {Li, Jianhua and Behjat, Laleh},
+doi = {10.1109/TCSII.2005.862174},
+issn = {15583791},
+journal = {IEEE Transactions on Circuits and Systems II: Express Briefs},
+keywords = {Clustering,iterative improvement,partitioning},
+number = {5},
+pages = {384--388},
+title = {{A Connectivity Based Clustering Algorithm With Application to VLSI Circuit Partitioning}},
+volume = {53},
+year = {2006}
+}
+
+@inproceedings{Moura2017,
+author = {Moura, Gisell and Pisoni, Filipe and Reis, Ricardo},
+booktitle = {Electronics, Circuits and Systems (ICECS), 2017 24th IEEE International Conference on},
+doi = {10.1109/ICECS.2017.8291996},
+file = {:home/para/Documents/ULB/EDA/ICECS{\_}-{\_}A cell clustering technique to reduce transistor count.pdf:pdf},
+isbn = {9781538619},
+keywords = {cell clustering,complex gates,logic synthesis,physical,physical synthesis,power reduction,transistor network},
+pages = {186--189},
+title = {{A Cell Clustering Technique to Reduce Transistor Count}},
+year = {2017}
+}
+
+@article{Li2006,
+author = {Li, Jianhua and Behjat, Laleh},
+doi = {10.1109/TCSII.2005.862174},
+issn = {15583791},
+journal = {IEEE Transactions on Circuits and Systems II: Express Briefs},
+keywords = {Clustering,iterative improvement,partitioning},
+number = {5},
+pages = {384--388},
+title = {{A Connectivity Based Clustering Algorithm With Application to VLSI Circuit Partitioning}},
+volume = {53},
+year = {2006}
+}
+@inproceedings{Moura2017,
+author = {Moura, Gisell and Pisoni, Filipe and Reis, Ricardo},
+booktitle = {Electronics, Circuits and Systems (ICECS), 2017 24th IEEE International Conference on},
+doi = {10.1109/ICECS.2017.8291996},
+file = {:home/para/Documents/ULB/EDA/ICECS{\_}-{\_}A cell clustering technique to reduce transistor count.pdf:pdf},
+isbn = {9781538619},
+keywords = {cell clustering,complex gates,logic synthesis,physical,physical synthesis,power reduction,transistor network},
+pages = {186--189},
+title = {{A Cell Clustering Technique to Reduce Transistor Count}},
+year = {2017}
+}
+
+@misc{gf2018,
+  title = {{GlobalFoundries Halts 7-Nanometer Chip Development}},
+  howpublished = {\url{https://spectrum.ieee.org/nanoclast/semiconductors/devices/globalfoundries-halts-7nm-chip-development/}},
+  note = {Accessed: 2018-10-15}
+}
